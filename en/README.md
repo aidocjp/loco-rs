@@ -11,7 +11,7 @@ This repository contains offline documentation scraped from [https://loco.rs/doc
 ## 🚀 Generated Information
 
 - **Source URL**: https://loco.rs/docs/the-app/controller/
-- **Generated**: 2025-06-22 08:31 UTC
+- **Generated**: 2025-06-22 07:51 UTC
 - **Generator**: [aidoc-bot](https://github.com/aidocjp/aidoc-bot)
 
 ## 🔧 Local Development

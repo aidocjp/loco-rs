@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang=" en-US" >
+<head>
+     
+
+    
+    
+    
+      <title>
+           Upgrades - Loco.rs
+          
+      </title>
+
+      
+          <meta property="og:title" content="Upgrades - Loco.rs" />
+          <meta property="og:title" content="Upgrades - Loco.rs">  
+          <meta name="twitter:title" content="Upgrades - Loco.rs"> 
+      
+    
+
+
+     
+         
+             <meta property="og:description" content="Loco.rs is like Ruby on Rails for Rust. Use it to quickly build and deploy Rust based apps from zero to production." />
+         
+     
+
+     
+         
+             <meta name="description" content="Loco.rs is like Ruby on Rails for Rust. Use it to quickly build and deploy Rust based apps from zero to production." />
+         
+    
+
+
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+  <meta property="og:image" content="https://loco.rs/apple-touch-icon@x4.png">
+
+  <meta name="twitter:card" content="summary_large_image"> 
+  <meta name="twitter:description" content="Loco.rs is like Ruby on Rails for Rust. Use it to quickly build and deploy Rust based apps from zero to production.">
+  <meta name="twitter:image" content="https://loco.rs/apple-touch-icon@x4.png">
+  
+  
+
+  <link rel="stylesheet" type="text/css" href=https://loco.rs/styles/styles.css />
+  <link rel="stylesheet" type="text/css" href=https://loco.rs/syntax-theme-light.css />
+  <link rel="stylesheet" type="text/css" href=https://loco.rs/syntax-theme-dark.css />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800" rel="stylesheet">
+
+  <link rel="apple-touch-icon" sizes="180x180" href=https://loco.rs/apple-touch-icon.png>
+  <link rel="icon" type="image/png" href=https://loco.rs/favicon-32x32.png>
+
+</head>
+
+<body><div class="dark"></div>
+  <div class="relative flex min-h-screen flex-col ">
+    
+
+<header
+	class=" sticky top-0 z-50 w-full border-border/40 backdrop-blur bg-background">
+	<div class="container relative flex h-14 md:grid md:grid-cols-[240px_minmax(0,1fr)] xl:max-w-[80rem]">
+		<div class="mr-4 hidden sm:flex">
+			<a class="flex mr-4  items-center space-x-2" href="../../../index.html">
+				<img src="https://loco.rs/icon.svg" width="30px" />
+			</a>
+			<nav class="flex w-full bg-transparent items-center gap-4 text-sm">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link text-black dark:text-white  active" href="../../getting-started/tour/index.html">ドキュメント
+				</a>
+				
+				<a class="nav-link text-black dark:text-white " href="../../../blog/index.html">ブログ
+				</a>
+				
+				<a class="nav-link text-black dark:text-white " href="../../../casts/index.html">キャスト
+				</a>
+				
+				
+			</nav>
+		</div>
+
+		<div class="flex items-center sm:hidden">
+				<button onclick="toggleMenu()"
+					class="inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 py-2 mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+					type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:R15u6ja:" data-state="closed">
+					<svg stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
+						<path d="M3 5H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+						</path>
+						<path d="M3 12H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+						</path>
+						<path d="M3 19H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+						</path>
+					</svg>
+					<span class="sr-only">メニューの切り替え</span>
+				</button>
+
+				<div class="absolute mt-[106px] left-0 right-0">
+						<nav id="menu-toggle" class="flex hidden bg-background  items-center gap-4 text-sm py-[15px] px-2 w-full">
+							<a class="flex items-center" href="../../../index.html">
+								<img src="https://loco.rs/icon.svg" width="30px" />
+							</a>
+							
+							
+							
+							
+							
+							
+							<a class="nav-link text-black dark:text-white  active" href="../../getting-started/tour/index.html">ドキュメント
+							</a>
+							
+							<a class="nav-link text-black dark:text-white " href="../../../blog/index.html">ブログ
+							</a>
+							
+							<a class="nav-link text-black dark:text-white " href="../../../casts/index.html">キャスト
+							</a>
+							
+							
+						</nav>
+		</div>
+		</div>
+
+		<div class="flex flex-1 items-center justify-between space-x-2">
+		
+			
+			<div class="flex-1 lg:flex lg:justify-end">
+				<form class="navbar-form flex-grow-1 order-7 order-md-3">
+					<input id="userinput"
+						class="placeholder-black dark:placeholder-white bg-transparent   inline-flex items-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-accent hover:text-accent-foreground px-4 py-2 relative h-8 w-full justify-start rounded-[0.5rem] bg-muted/50 text-sm font-normal shadow-none sm:pr-12 lg:max-w-64"
+						type="search" placeholder="ドキュメントを検索..." aria-label="ドキュメントを検索..." autocomplete="off">
+		
+					<div id="suggestions" class="shadow  rounded"></div>
+				</form>
+			</div>
+			
+		
+		
+		
+			<nav class="flex items-center">
+				<button id="mode" class="btn btn-link order-2 order-md-4" type="button" aria-label="モードを切り替える">
+					<span class="toggle-dark hidden"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+							fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+							class="feather feather-moon">
+							<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+						</svg></span>
+					<span class="toggle-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+							fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+							class="feather feather-sun">
+							<circle cx="12" cy="12" r="5"></circle>
+							<line x1="12" y1="1" x2="12" y2="3"></line>
+							<line x1="12" y1="21" x2="12" y2="23"></line>
+							<line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+							<line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+							<line x1="1" y1="12" x2="3" y2="12"></line>
+							<line x1="21" y1="12" x2="23" y2="12"></line>
+							<line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+							<line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+						</svg></span>
+				</button>
+				
+				
+				<div
+					class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground py-2 h-8 w-8 px-0">
+					<a class="nav-link" href="https://twitter.com/jondot" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg><span class="sr-only">Twitter</span></a>
+				</div>
+				
+				<div
+					class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground py-2 h-8 w-8 px-0">
+					<a class="nav-link" href="https://github.com/loco-rs/loco" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg><span class="sr-only">GitHub</span></a>
+				</div>
+				
+				
+			</nav>
+		</div>
+	</div>
+</header>
+<!-- JavaScript to toggle menu visibility -->
+<script>
+	function toggleMenu() {
+		var menu = document.getElementById('menu-toggle');
+		menu.classList.toggle('hidden');
+	}
+</script>
+
+
+
+    
+<div role="document">
+  <div class="bg-redrust text-background dark:bg-zinc-900">
+    <div class="container xl:max-w-[80rem]">
+      <aside class="w-full">
+        
+<div class="lg:py-8">
+	<nav class="flex gap-5 md:gap-10 flex-wrap" aria-label="Main navigation">
+		
+		
+		
+		
+		
+		
+		
+		<div>
+			<h3 class="mb-4 py-1 text-sm font-semibold text-white border-b border-red-100">はじめに</h3>
+			<ul class="mb-4">
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../getting-started/tour/index.html">クイックツアー
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../getting-started/guide/index.html">Locoガイド
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../getting-started/starters/index.html">スターター
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../getting-started/axum-users/index.html">Axum vs Loco
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		
+		
+		
+		<div>
+			<h3 class="mb-4 py-1 text-sm font-semibold text-white border-b border-red-100">アプリケーション</h3>
+			<ul class="mb-4">
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../the-app/your-project/index.html">プロジェクト
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../the-app/models/index.html">モデル
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../the-app/views/index.html">ビュー
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../the-app/controller/index.html">コントローラー
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		
+		
+		
+		<div>
+			<h3 class="mb-4 py-1 text-sm font-semibold text-white border-b border-red-100">処理</h3>
+			<ul class="mb-4">
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../processing/workers/index.html">ワーカー
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../processing/mailers/index.html">メーラー
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../processing/task/index.html">タスク
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../processing/scheduler/index.html">スケジューラー
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		
+		
+		
+		<div>
+			<h3 class="mb-4 py-1 text-sm font-semibold text-white border-b border-red-100">インフラストラクチャ</h3>
+			<ul class="mb-4">
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../infrastructure/storage/index.html">ストレージ
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../infrastructure/cache/index.html">キャッシュ
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../infrastructure/deployment/index.html">デプロイ
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../infrastructure/data/index.html">データ
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		
+		
+		
+		<div>
+			<h3 class="mb-4 py-1 text-sm font-semibold text-white border-b border-red-100">追加機能</h3>
+			<ul class="mb-4">
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../authentication/index.html">認証
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../websocket/index.html">Websocket
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../pluggability/index.html">プラグイン機能
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-white font-semibold "
+						href="index.html">アップグレード
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		
+		
+		
+		<div>
+			<h3 class="mb-4 py-1 text-sm font-semibold text-white border-b border-red-100">リソース</h3>
+			<ul class="mb-4">
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../resources/around-the-web/index.html">ウェブ上の情報
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../resources/faq/index.html">よくある質問
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		
+		
+	</nav>
+</div>
+
+      </aside>
+    </div>
+  </div>
+  <div
+    class="container flex-1 items-start">
+    <main class="py-6 xl:grid xl:grid-cols-[1fr_450px] xl:max-w-[80rem] xl:mx-auto">
+      <div class="mx-auto w-full min-w-0">
+        <div class="markdown prose dark:prose-invert max-w-[60rem] md:pr-12 sm:pr-0">
+          <h1 class="mb-10 mt-[9px]">アップグレード</h1>
+          
+
+          <h2 id="what-to-do-when-a-new-loco-version-is-out">新しいLocoバージョンがリリースされたらどうすればよいですか？</h2>
+<ul>
+<li>コードリポジトリにクリーンなブランチを作成します。</li>
+<li>メインの <code>Cargo.toml</code> で Loco のバージョンを更新します</li>
+<li><a href="https://github.com/loco-rs/loco/blob/master/CHANGELOG.md" target="_blank" rel="noopener">CHANGELOG</a>を参照して、行うべき破壊的変更やリファクタリング（もしあれば）を確認してください。</li>
+<li>プロジェクト内で <code>cargo loco doctor</code> を実行して、アプリケーションと環境が新しいバージョンと互換性があることを確認します。</li>
+</ul>
+<p>いつものように、何か問題が発生した場合は、<a href="https://github.com/loco-rs/loco/issues" target="_blank" rel="noopener">issueを開いて</a>助けを求めてください。</p>
+<h2 id="major-loco-dependencies">主要なLoco依存関係</h2>
+<p>Locoは素晴らしいライブラリの上に構築されています。Locoの新しいリリースでのそれらのバージョンと、それぞれの変更履歴に注意を払うことが賢明です。</p>
+<p>主なものは以下の通りです:</p>
+<ul>
+<li><a href="https://www.sea-ql.org/SeaORM" target="_blank" rel="noopener">SeaORM</a>, <a href="https://github.com/SeaQL/sea-orm/blob/master/CHANGELOG.md" target="_blank" rel="noopener">CHANGELOG</a></li>
+<li><a href="https://github.com/tokio-rs/axum" target="_blank" rel="noopener">Axum</a>, <a href="https://github.com/tokio-rs/axum/blob/main/axum/CHANGELOG.md" target="_blank" rel="noopener">CHANGELOG</a></li>
+</ul>
+<h2 id="upgrade-from-0-13-x-to-0-14-x">0.13.x から 0.14.x へのアップグレード</h2>
+<h3 id="upgrading-from-axum-0-7-to-0-8">Axum 0.7 から 0.8 へのアップグレード</h3>
+<p>PR: <a href="https://github.com/loco-rs/loco/pull/1130" target="_blank" rel="noopener">#1130</a>
+Axum 0.8へのアップグレードには破壊的な変更が含まれています。詳細については、<a href="https://tokio.rs/blog/2025-01-01-announcing-axum-0-8-0" target="_blank" rel="noopener">アナウンス</a>を参照してください。</p>
+<h4 id="steps-to-upgrade">アップグレード手順</h4>
+<ul>
+<li><code>Cargo.toml</code> で、Axum のバージョンを <code>0.7.5</code> から <code>0.8.1</code> に更新します。</li>
+<li><code>use axum::async_trait;</code> を <code>use async_trait::async_trait;</code> に置き換えます。詳細については、<a href="https://tokio.rs/blog/2025-01-01-announcing-axum-0-8-0#async_trait-removal" target="_blank" rel="noopener">こちら</a>を参照してください。</li>
+<li>URLパラメータの構文が変更されました。更新された構文については、<a href="https://tokio.rs/blog/2025-01-01-announcing-axum-0-8-0#path-parameter-syntax-changes" target="_blank" rel="noopener">このセクション</a>を参照してください。新しいパスパラメータの形式は次のとおりです:
+パスパラメータの構文が <code>/:single</code> および <code>/*many</code> から <code>/{single}</code> および <code>/{*many}</code> に変更されました。</li>
+</ul>
+<h3 id="extending-the-boot-function-hook">boot 関数フックの拡張</h3>
+<p>PR: <a href="https://github.com/loco-rs/loco/pull/1143" target="_blank" rel="noopener">#1143</a></p>
+<p><code>boot</code>フック関数は、追加のConfigパラメータを受け入れるようになりました。関数のシグネチャは以下のように変更されました:</p>
+<p>変更前</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust">async <span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">boot</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">(</span><span class="z-variable z-parameter z-rust">mode</span><span class="z-punctuation z-separator z-rust">:</span> StartMode, <span class="z-variable z-parameter z-rust">environment</span><span class="z-punctuation z-separator z-rust">:</span> <span class="z-keyword z-operator z-rust">&amp;</span>Environment</span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">)</span></span></span></span><span class="z-meta z-function z-rust"> <span class="z-meta z-function z-return-type z-rust"><span class="z-punctuation z-separator z-rust">-&gt;</span> <span class="z-meta z-generic z-rust"><span class="z-support z-type z-rust">Result</span><span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span>BootResult<span class="z-punctuation z-definition z-generic z-end z-rust">&gt;</span></span></span> </span><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">     <span class="z-meta z-path z-rust">create_app<span class="z-punctuation z-accessor z-rust">::</span></span><span class="z-meta z-generic z-rust"><span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span><span class="z-storage z-type z-rust">Self</span>, Migrator<span class="z-punctuation z-definition z-generic z-end z-rust">&gt;</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>mode<span class="z-punctuation z-separator z-rust">,</span> environment</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span>await
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></code></pre>
+<p>変更後:</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust">async <span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">boot</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">(</span><span class="z-variable z-parameter z-rust">mode</span><span class="z-punctuation z-separator z-rust">:</span> StartMode, <span class="z-variable z-parameter z-rust">environment</span><span class="z-punctuation z-separator z-rust">:</span> <span class="z-keyword z-operator z-rust">&amp;</span>Environment, <span class="z-variable z-parameter z-rust">config</span><span class="z-punctuation z-separator z-rust">:</span> Config</span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">)</span></span></span></span><span class="z-meta z-function z-rust"> <span class="z-meta z-function z-return-type z-rust"><span class="z-punctuation z-separator z-rust">-&gt;</span> <span class="z-meta z-generic z-rust"><span class="z-support z-type z-rust">Result</span><span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span>BootResult<span class="z-punctuation z-definition z-generic z-end z-rust">&gt;</span></span></span> </span><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">     <span class="z-meta z-path z-rust">create_app<span class="z-punctuation z-accessor z-rust">::</span></span><span class="z-meta z-generic z-rust"><span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span><span class="z-storage z-type z-rust">Self</span>, Migrator<span class="z-punctuation z-definition z-generic z-end z-rust">&gt;</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>mode<span class="z-punctuation z-separator z-rust">,</span> environment<span class="z-punctuation z-separator z-rust">,</span> config</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span>await
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></code></pre>
+<p>必要に応じて <code>Config</code> 型をインポートしてください。</p>
+<h3 id="upgrade-validator-crate">バリデータークレートのアップグレード</h3>
+<p>PR: <a href="https://github.com/loco-rs/loco/pull/993" target="_blank" rel="noopener">#993</a></p>
+<p><code>Cargo.toml</code> でバリデータークレートのバージョンを更新します:</p>
+<p>変更前</p>
+<pre class="z-code"><code><span class="z-text z-plain">validator = { version = &quot;0.18&quot; }
+</span></code></pre>
+<p>変更後</p>
+<pre class="z-code"><code><span class="z-text z-plain">validator = { version = &quot;0.19&quot; }
+</span></code></pre>
+<h3 id="extend-truncate-and-seed-hooks">truncate および seed フックの拡張</h3>
+<p>PR: <a href="https://github.com/loco-rs/loco/pull/1158" target="_blank" rel="noopener">#1158</a></p>
+<p><code>truncate</code> および <code>seed</code> 関数は、引数として <code>DatabaseConnection</code> の代わりに <code>AppContext</code> を受け取るようになりました。</p>
+<p>変更前</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust">async <span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">truncate</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">(</span><span class="z-variable z-parameter z-rust">db</span><span class="z-punctuation z-separator z-rust">:</span> <span class="z-keyword z-operator z-rust">&amp;</span>DatabaseConnection</span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">)</span></span></span></span><span class="z-meta z-function z-rust"> <span class="z-meta z-function z-return-type z-rust"><span class="z-punctuation z-separator z-rust">-&gt;</span> <span class="z-meta z-generic z-rust"><span class="z-support z-type z-rust">Result</span><span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-punctuation z-section z-group z-end z-rust">)</span><span class="z-punctuation z-definition z-generic z-end z-rust">&gt;</span></span></span> </span><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span><span class="z-source z-rust">async <span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">seed</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">(</span><span class="z-variable z-parameter z-rust">db</span><span class="z-punctuation z-separator z-rust">:</span> <span class="z-keyword z-operator z-rust">&amp;</span>DatabaseConnection, <span class="z-variable z-parameter z-rust">base</span><span class="z-punctuation z-separator z-rust">:</span> <span class="z-keyword z-operator z-rust">&amp;</span>Path</span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">)</span></span></span></span><span class="z-meta z-function z-rust"> <span class="z-meta z-function z-return-type z-rust"><span class="z-punctuation z-separator z-rust">-&gt;</span> <span class="z-meta z-generic z-rust"><span class="z-support z-type z-rust">Result</span><span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-punctuation z-section z-group z-end z-rust">)</span><span class="z-punctuation z-definition z-generic z-end z-rust">&gt;</span></span></span> </span><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></code></pre>
+<p>変更後</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust">async <span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">truncate</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">(</span><span class="z-variable z-parameter z-rust">ctx</span><span class="z-punctuation z-separator z-rust">:</span> <span class="z-keyword z-operator z-rust">&amp;</span>AppContext</span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">)</span></span></span></span><span class="z-meta z-function z-rust"> <span class="z-meta z-function z-return-type z-rust"><span class="z-punctuation z-separator z-rust">-&gt;</span> <span class="z-meta z-generic z-rust"><span class="z-support z-type z-rust">Result</span><span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-punctuation z-section z-group z-end z-rust">)</span><span class="z-punctuation z-definition z-generic z-end z-rust">&gt;</span></span></span> </span><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span><span class="z-source z-rust">async <span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">seed</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">(</span><span class="z-variable z-parameter z-rust">_ctx</span><span class="z-punctuation z-separator z-rust">:</span> <span class="z-keyword z-operator z-rust">&amp;</span>AppContext, <span class="z-variable z-parameter z-rust">base</span><span class="z-punctuation z-separator z-rust">:</span> <span class="z-keyword z-operator z-rust">&amp;</span>Path</span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">)</span></span></span></span><span class="z-meta z-function z-rust"> <span class="z-meta z-function z-return-type z-rust"><span class="z-punctuation z-separator z-rust">-&gt;</span> <span class="z-meta z-generic z-rust"><span class="z-support z-type z-rust">Result</span><span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-punctuation z-section z-group z-end z-rust">)</span><span class="z-punctuation z-definition z-generic z-end z-rust">&gt;</span></span></span> </span><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></code></pre>
+<p>テストへの影響:</p>
+<p>seed 関数を含むテストコードも、それに応じて更新する必要があります。</p>
+<p>変更前:</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust">async <span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">load_page</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">(</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">)</span></span></span></span><span class="z-meta z-function z-rust"> </span><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    <span class="z-meta z-path z-rust">request<span class="z-punctuation z-accessor z-rust">::</span></span><span class="z-meta z-generic z-rust"><span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span>App, <span class="z-keyword z-operator z-rust">_</span>, <span class="z-keyword z-operator z-rust">_</span><span class="z-punctuation z-definition z-generic z-end z-rust">&gt;</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">|</span></span></span><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-variable z-parameter z-rust">request</span><span class="z-punctuation z-separator z-rust">,</span> <span class="z-variable z-parameter z-rust">ctx</span><span class="z-punctuation z-section z-parameters z-end z-rust">|</span></span> </span><span class="z-meta z-function z-closure z-rust">async <span class="z-storage z-modifier z-rust">move</span> <span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">        <span class="z-meta z-path z-rust">seed<span class="z-punctuation z-accessor z-rust">::</span></span><span class="z-meta z-generic z-rust"><span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span>App<span class="z-punctuation z-definition z-generic z-end z-rust">&gt;</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-keyword z-operator z-bitwise z-rust">&amp;</span>ctx<span class="z-punctuation z-accessor z-dot z-rust">.</span>db</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span>await<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">unwrap</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">        <span class="z-keyword z-operator z-range z-rust">...</span>
+</span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">    </span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    <span class="z-punctuation z-accessor z-dot z-rust">.</span>await<span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></code></pre>
+<p>変更後</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust">async <span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">load_page</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">(</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">)</span></span></span></span><span class="z-meta z-function z-rust"> </span><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    <span class="z-meta z-path z-rust">request<span class="z-punctuation z-accessor z-rust">::</span></span><span class="z-meta z-generic z-rust"><span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span>App, <span class="z-keyword z-operator z-rust">_</span>, <span class="z-keyword z-operator z-rust">_</span><span class="z-punctuation z-definition z-generic z-end z-rust">&gt;</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">|</span></span></span><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-variable z-parameter z-rust">request</span><span class="z-punctuation z-separator z-rust">,</span> <span class="z-variable z-parameter z-rust">ctx</span><span class="z-punctuation z-section z-parameters z-end z-rust">|</span></span> </span><span class="z-meta z-function z-closure z-rust">async <span class="z-storage z-modifier z-rust">move</span> <span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">        <span class="z-meta z-path z-rust">seed<span class="z-punctuation z-accessor z-rust">::</span></span><span class="z-meta z-generic z-rust"><span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span>App<span class="z-punctuation z-definition z-generic z-end z-rust">&gt;</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-keyword z-operator z-bitwise z-rust">&amp;</span>ctx</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span>await<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">unwrap</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">        <span class="z-keyword z-operator z-range z-rust">...</span>
+</span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">    </span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    <span class="z-punctuation z-accessor z-dot z-rust">.</span>await<span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></code></pre>
+<h2 id="upgrade-from-0-14-x-to-0-15-x">0.14.x から 0.15.x へのアップグレード</h2>
+<h3 id="upgrade-validator-crate-1">バリデータークレートのアップグレード</h3>
+<p>PR: <a href="https://github.com/loco-rs/loco/pull/1199" target="_blank" rel="noopener">#1199</a></p>
+<p><code>Cargo.toml</code> でバリデータークレートのバージョンを更新します:</p>
+<p>変更前</p>
+<pre class="z-code"><code><span class="z-text z-plain">validator = { version = &quot;0.19&quot; }
+</span></code></pre>
+<p>変更後</p>
+<pre class="z-code"><code><span class="z-text z-plain">validator = { version = &quot;0.20&quot; }
+</span></code></pre>
+<h3 id="user-claims">ユーザークレーム</h3>
+<p>PR: <a href="https://github.com/loco-rs/loco/pull/1159" target="_blank" rel="noopener">#1159</a></p>
+<ul>
+<li>
+<p>カスタムユーザークレームの平坦化された (デ)シリアライゼーション:
+<code>UserClaims</code>の<code>claims</code>フィールドが、<code>Option&lt;Value&gt;</code>から<code>Map&lt;String, Value&gt;</code>に変更されました。</p>
+</li>
+<li>
+<p><code>generate_token</code>関数における必須のマップ値:
+<code>generate_token</code>を呼び出す際、<code>Map&lt;String, Value&gt;</code>引数が必須となりました。カスタムクレームを使用しない場合は、空のマップ（<code>serde_json::Map::new()</code>）を渡してください。</p>
+</li>
+<li>
+<p><code>generate_token</code>のシグネチャの更新:
+<code>generate_token</code>関数は、期限切れを参照ではなく値として受け取るようになりました。</p>
+</li>
+</ul>
+<h3 id="pagination-response">ページネーションレスポンス</h3>
+<p>PR: <a href="https://github.com/loco-rs/loco/pull/1197" target="_blank" rel="noopener">#1197</a></p>
+<p>ページネーションレスポンスに <code>total_items</code> フィールドが追加され、利用可能なアイテムの総数が提供されるようになりました。</p>
+<pre data-lang="JSON" class="language-JSON z-code"><code class="language-JSON" data-lang="JSON"><span class="z-source z-json"><span class="z-meta z-mapping z-json"><span class="z-punctuation z-section z-mapping z-begin z-json">{</span></span><span class="z-meta z-mapping z-key z-json"><span class="z-string z-quoted z-double z-json"><span class="z-punctuation z-definition z-string z-begin z-json">&quot;</span>results<span class="z-punctuation z-definition z-string z-end z-json">&quot;</span></span></span><span class="z-meta z-mapping z-json"><span class="z-punctuation z-separator z-mapping z-key-value z-json">:</span></span><span class="z-meta z-mapping z-value z-json"><span class="z-meta z-sequence z-json"><span class="z-punctuation z-section z-sequence z-begin z-json">[</span><span class="z-punctuation z-section z-sequence z-end z-json">]</span></span><span class="z-punctuation z-separator z-mapping z-pair z-json">,</span></span><span class="z-meta z-mapping z-key z-json"><span class="z-string z-quoted z-double z-json"><span class="z-punctuation z-definition z-string z-begin z-json">&quot;</span>pagination<span class="z-punctuation z-definition z-string z-end z-json">&quot;</span></span></span><span class="z-meta z-mapping z-value z-json"><span class="z-punctuation z-separator z-mapping z-key-value z-json">:</span></span><span class="z-meta z-mapping z-value z-json"><span class="z-meta z-mapping z-json"><span class="z-punctuation z-section z-mapping z-begin z-json">{</span></span><span class="z-meta z-mapping z-key z-json"><span class="z-string z-quoted z-double z-json"><span class="z-punctuation z-definition z-string z-begin z-json">&quot;</span>page<span class="z-punctuation z-definition z-string z-end z-json">&quot;</span></span></span><span class="z-meta z-mapping z-json"><span class="z-punctuation z-separator z-mapping z-key-value z-json">:</span></span><span class="z-meta z-mapping z-value z-json"><span class="z-constant z-numeric z-integer z-decimal z-json">0</span><span class="z-punctuation z-separator z-mapping z-pair z-json">,</span></span><span class="z-meta z-mapping z-key z-json"><span class="z-string z-quoted z-double z-json"><span class="z-punctuation z-definition z-string z-begin z-json">&quot;</span>page_size<span class="z-punctuation z-definition z-string z-end z-json">&quot;</span></span></span><span class="z-meta z-mapping z-value z-json"><span class="z-punctuation z-separator z-mapping z-key-value z-json">:</span></span><span class="z-meta z-mapping z-value z-json"><span class="z-constant z-numeric z-integer z-decimal z-json">0</span><span class="z-punctuation z-separator z-mapping z-pair z-json">,</span></span><span class="z-meta z-mapping z-key z-json"><span class="z-string z-quoted z-double z-json"><span class="z-punctuation z-definition z-string z-begin z-json">&quot;</span>total_pages<span class="z-punctuation z-definition z-string z-end z-json">&quot;</span></span></span><span class="z-meta z-mapping z-value z-json"><span class="z-punctuation z-separator z-mapping z-key-value z-json">:</span></span><span class="z-meta z-mapping z-value z-json"><span class="z-constant z-numeric z-integer z-decimal z-json">0</span><span class="z-punctuation z-separator z-mapping z-pair z-json">,</span></span><span class="z-meta z-mapping z-key z-json"><span class="z-string z-quoted z-double z-json"><span class="z-punctuation z-definition z-string z-begin z-json">&quot;</span>total_items<span class="z-punctuation z-definition z-string z-end z-json">&quot;</span></span></span><span class="z-meta z-mapping z-value z-json"><span class="z-punctuation z-separator z-mapping z-key-value z-json">:</span></span><span class="z-meta z-mapping z-value z-json"><span class="z-constant z-numeric z-integer z-decimal z-json">0</span><span class="z-punctuation z-section z-mapping z-end z-json">}</span></span><span class="z-punctuation z-section z-mapping z-end z-json">}</span></span>
+</span></code></pre>
+
+        </div>
+        
+        
+<div class="flex items-center justify-between px-2">
+  
+  
+  
+  
+  
+  <a href="https://&/#x2F;&#x2F;loco.rs&#x2F;docs&#x2F;extras&#x2F;pluggability&#x2F;" target="_blank" rel="noopener">
+    <div class="card my-1">
+      <div class="card-body py-2">
+        &larr; プラグイン機能
+      </div>
+    </div>
+  </a>
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <a class="ms-auto" href="https://&/#x2F;&#x2F;loco.rs&#x2F;docs&#x2F;resources&#x2F;around-the-web&#x2F;" target="_blank" rel="noopener">
+    <div class="card my-1">
+      <div class="card-body py-2">
+        ウェブ上の情報 &rarr;
+      </div>
+    </div>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+      </div>
+
+      <div class="hidden text-sm xl:block">
+        <div class="bg-gray-50 p-2 mt-[90px] border border-gray-200 rounded-sm dark:bg-zinc-900">
+        
+
+<nav>
+	<ul>
+		
+		<li class="mb-1 px-2 py-1 text-sm font-semibold"><a href="index.html">新しいLocoバージョンがリリースされたらどうすればよいですか？</a></li>
+		
+		
+		<li class="mb-1 px-2 py-1 text-sm font-semibold"><a href="index.html">主要なLoco依存関係</a></li>
+		
+		
+		<li class="mb-1 px-2 py-1 text-sm font-semibold"><a href="index.html">0.13.x から 0.14.x へのアップグレード</a></li>
+		
+		<ul>
+			
+			<li
+				class="group flex w-full items-center border border-transparent pl-5 px-2 py-1 hover:underline text-sm  text-foreground">
+				<a href="index.html">Axum 0.7 から 0.8 へのアップグレード</a>
+			</li>
+			
+			<li
+				class="group flex w-full items-center border border-transparent pl-5 px-2 py-1 hover:underline text-sm  text-foreground">
+				<a href="index.html">boot 関数フックの拡張</a>
+			</li>
+			
+			<li
+				class="group flex w-full items-center border border-transparent pl-5 px-2 py-1 hover:underline text-sm  text-foreground">
+				<a href="index.html">バリデータークレートのアップグレード</a>
+			</li>
+			
+			<li
+				class="group flex w-full items-center border border-transparent pl-5 px-2 py-1 hover:underline text-sm  text-foreground">
+				<a href="index.html">truncate および seed フックの拡張</a>
+			</li>
+			
+		</ul>
+		
+		
+		<li class="mb-1 px-2 py-1 text-sm font-semibold"><a href="index.html">0.14.x から 0.15.x へのアップグレード</a></li>
+		
+		<ul>
+			
+			<li
+				class="group flex w-full items-center border border-transparent pl-5 px-2 py-1 hover:underline text-sm  text-foreground">
+				<a href="index.html">バリデータークレートのアップグレード</a>
+			</li>
+			
+			<li
+				class="group flex w-full items-center border border-transparent pl-5 px-2 py-1 hover:underline text-sm  text-foreground">
+				<a href="index.html">ユーザークレーム</a>
+			</li>
+			
+			<li
+				class="group flex w-full items-center border border-transparent pl-5 px-2 py-1 hover:underline text-sm  text-foreground">
+				<a href="index.html">ページネーションレスポンス</a>
+			</li>
+			
+		</ul>
+		
+		
+	</ul>
+</nav>
+
+
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+
+
+</div>
+
+
+</div>
+
+  </div>
+
+  
+<div class="section bg-redrust dark:bg-zinc-800 pt-8">
+  <div class="container flex flex-col items-center text-center text-background py-8 pb-12">
+      <div class="mb-8">
+      <img src="https://loco.rs/icon.svg" width="130px" />
+      </div>
+      <div class="footer-links">
+          <a href="https://github.com/loco-rs/loco" target="_blank" rel="noopener">
+              Github
+          </a>
+          <a href="https://github.com/loco-rs/loco/blob/master/CODE_OF_CONDUCT.md" target="_blank" rel="noopener">
+              行動規範
+          </a>
+          <a href="https://github.com/loco-rs/loco/blob/master/LICENSE" target="_blank" rel="noopener">
+              ライセンス
+          </a>
+          <a href="https://github.com/loco-rs/loco/blob/master/SECURITY.md" target="_blank" rel="noopener">
+              セキュリティ
+          </a>
+      </div>
+  </div>
+</div>
+
+  
+<script type="text/javascript" src="https://loco.rs/js/main.js" defer></script>
+
+  <script type="text/javascript" src="https://loco.rs/plugins/elasticlunr.min.js" defer></script>
+  <script type="text/javascript" src="https://loco.rs/search_index.en.js" defer></script>
+  <script type="text/javascript" src="https://loco.rs/js/search.js" defer></script></body>
+
+</html>
