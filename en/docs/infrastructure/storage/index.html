@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang=" en-US" >
+<head>
+     
+
+    
+    
+    
+      <title>
+           Storage - Loco.rs
+          
+      </title>
+
+      
+          <meta property="og:title" content="Storage - Loco.rs" />
+          <meta property="og:title" content="Storage - Loco.rs">  
+          <meta name="twitter:title" content="Storage - Loco.rs"> 
+      
+    
+
+
+     
+         
+             <meta property="og:description" content="Loco.rs is like Ruby on Rails for Rust. Use it to quickly build and deploy Rust based apps from zero to production." />
+         
+     
+
+     
+         
+             <meta name="description" content="Loco.rs is like Ruby on Rails for Rust. Use it to quickly build and deploy Rust based apps from zero to production." />
+         
+    
+
+
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+  <meta property="og:image" content="https://loco.rs/apple-touch-icon@x4.png">
+
+  <meta name="twitter:card" content="summary_large_image"> 
+  <meta name="twitter:description" content="Loco.rs is like Ruby on Rails for Rust. Use it to quickly build and deploy Rust based apps from zero to production.">
+  <meta name="twitter:image" content="https://loco.rs/apple-touch-icon@x4.png">
+  
+  
+
+  <link rel="stylesheet" type="text/css" href=https://loco.rs/styles/styles.css />
+  <link rel="stylesheet" type="text/css" href=https://loco.rs/syntax-theme-light.css />
+  <link rel="stylesheet" type="text/css" href=https://loco.rs/syntax-theme-dark.css />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800" rel="stylesheet">
+
+  <link rel="apple-touch-icon" sizes="180x180" href=https://loco.rs/apple-touch-icon.png>
+  <link rel="icon" type="image/png" href=https://loco.rs/favicon-32x32.png>
+
+</head>
+
+<body class="bg-background">
+  <div class="dark"></div>
+  <div class="relative flex min-h-screen flex-col ">
+    
+
+
+
+<header
+	class=" sticky top-0 z-50 w-full border-border/40 backdrop-blur bg-background">
+	<div class="container relative flex h-14 md:grid md:grid-cols-[240px_minmax(0,1fr)] xl:max-w-[80rem]">
+		<div class="mr-4 hidden sm:flex">
+			<a class="flex mr-4  items-center space-x-2" href="../../../index.html">
+				<img src="https://loco.rs/icon.svg" width="30px" />
+			</a>
+			<nav class="flex w-full bg-transparent items-center gap-4 text-sm">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link text-black dark:text-white  active" href="../../getting-started/tour/index.html">Docs
+				</a>
+				
+				<a class="nav-link text-black dark:text-white " href="../../../blog/index.html">Blog
+				</a>
+				
+				<a class="nav-link text-black dark:text-white " href="../../../casts/index.html">Casts
+				</a>
+				
+				
+			</nav>
+		</div>
+
+		<div class="flex items-center sm:hidden">
+				<button onclick="toggleMenu()"
+					class="inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 py-2 mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+					type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:R15u6ja:" data-state="closed">
+					<svg stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
+						<path d="M3 5H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+						</path>
+						<path d="M3 12H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+						</path>
+						<path d="M3 19H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+						</path>
+					</svg>
+					<span class="sr-only">Toggle Menu</span>
+				</button>
+
+				<div class="absolute mt-[106px] left-0 right-0">
+						<nav id="menu-toggle" class="flex hidden bg-background  items-center gap-4 text-sm py-[15px] px-2 w-full">
+							<a class="flex items-center" href="../../../index.html">
+								<img src="https://loco.rs/icon.svg" width="30px" />
+							</a>
+							
+							
+							
+							
+							
+							
+							<a class="nav-link text-black dark:text-white  active" href="../../getting-started/tour/index.html">Docs
+							</a>
+							
+							<a class="nav-link text-black dark:text-white " href="../../../blog/index.html">Blog
+							</a>
+							
+							<a class="nav-link text-black dark:text-white " href="../../../casts/index.html">Casts
+							</a>
+							
+							
+						</nav>
+		</div>
+		</div>
+
+		<div class="flex flex-1 items-center justify-between space-x-2">
+		
+			
+			<div class="flex-1 lg:flex lg:justify-end">
+				<form class="navbar-form flex-grow-1 order-7 order-md-3">
+					<input id="userinput"
+						class="placeholder-black dark:placeholder-white bg-transparent   inline-flex items-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-accent hover:text-accent-foreground px-4 py-2 relative h-8 w-full justify-start rounded-[0.5rem] bg-muted/50 text-sm font-normal shadow-none sm:pr-12 lg:max-w-64"
+						type="search" placeholder="Search docs..." aria-label="Search docs..." autocomplete="off">
+		
+					<div id="suggestions" class="shadow  rounded"></div>
+				</form>
+			</div>
+			
+		
+		
+		
+			<nav class="flex items-center">
+				<button id="mode" class="btn btn-link order-2 order-md-4" type="button" aria-label="Toggle mode">
+					<span class="toggle-dark hidden"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+							fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+							class="feather feather-moon">
+							<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+						</svg></span>
+					<span class="toggle-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+							fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+							class="feather feather-sun">
+							<circle cx="12" cy="12" r="5"></circle>
+							<line x1="12" y1="1" x2="12" y2="3"></line>
+							<line x1="12" y1="21" x2="12" y2="23"></line>
+							<line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+							<line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+							<line x1="1" y1="12" x2="3" y2="12"></line>
+							<line x1="21" y1="12" x2="23" y2="12"></line>
+							<line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+							<line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+						</svg></span>
+				</button>
+				
+				
+				<div
+					class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground py-2 h-8 w-8 px-0">
+					<a class="nav-link" href="https://twitter.com/jondot" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg><span class="sr-only">Twitter</span></a>
+				</div>
+				
+				<div
+					class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground py-2 h-8 w-8 px-0">
+					<a class="nav-link" href="https://github.com/loco-rs/loco" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg><span class="sr-only">GitHub</span></a>
+				</div>
+				
+				
+			</nav>
+		</div>
+	</div>
+</header>
+<!-- JavaScript to toggle menu visibility -->
+<script>
+	function toggleMenu() {
+		var menu = document.getElementById('menu-toggle');
+		menu.classList.toggle('hidden');
+	}
+</script>
+
+
+
+    
+<div role="document">
+  <div class="bg-redrust text-background dark:bg-zinc-900">
+    <div class="container xl:max-w-[80rem]">
+      <aside class="w-full">
+        
+<div class="lg:py-8">
+	<nav class="flex gap-5 md:gap-10 flex-wrap" aria-label="Main navigation">
+		
+		
+		
+		
+		
+		
+		
+		<div>
+			<h3 class="mb-4 py-1 text-sm font-semibold text-white border-b border-red-100">Getting Started</h3>
+			<ul class="mb-4">
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../getting-started/tour/index.html">A Quick Tour
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../getting-started/guide/index.html">The Loco Guide
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../getting-started/starters/index.html">Starters
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../getting-started/axum-users/index.html">Axum vs Loco
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		
+		
+		
+		<div>
+			<h3 class="mb-4 py-1 text-sm font-semibold text-white border-b border-red-100">The App</h3>
+			<ul class="mb-4">
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../the-app/your-project/index.html">Your Project
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../the-app/models/index.html">Models
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../the-app/views/index.html">Views
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../the-app/controller/index.html">Controllers
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		
+		
+		
+		<div>
+			<h3 class="mb-4 py-1 text-sm font-semibold text-white border-b border-red-100">Processing</h3>
+			<ul class="mb-4">
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../processing/workers/index.html">Workers
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../processing/mailers/index.html">Mailers
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../processing/task/index.html">Tasks
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../processing/scheduler/index.html">Scheduler
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		
+		
+		
+		<div>
+			<h3 class="mb-4 py-1 text-sm font-semibold text-white border-b border-red-100">Infrastructure</h3>
+			<ul class="mb-4">
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-white font-semibold "
+						href="index.html">Storage
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../cache/index.html">Cache
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../deployment/index.html">Deployment
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../data/index.html">Data
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		
+		
+		
+		<div>
+			<h3 class="mb-4 py-1 text-sm font-semibold text-white border-b border-red-100">Extras</h3>
+			<ul class="mb-4">
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../extras/authentication/index.html">Authentication
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../extras/websocket/index.html">Websocket
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../extras/pluggability/index.html">Pluggability
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../extras/upgrades/index.html">Upgrades
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		
+		
+		
+		<div>
+			<h3 class="mb-4 py-1 text-sm font-semibold text-white border-b border-red-100">Resources</h3>
+			<ul class="mb-4">
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../resources/around-the-web/index.html">Around the Web
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../resources/faq/index.html">FAQ
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		
+		
+	</nav>
+</div>
+
+      </aside>
+    </div>
+  </div>
+  <div
+    class="container flex-1 items-start">
+    <main class="py-6 xl:grid xl:grid-cols-[1fr_450px] xl:max-w-[80rem] xl:mx-auto">
+      <div class="mx-auto w-full min-w-0">
+        <div class="markdown prose dark:prose-invert max-w-[60rem] md:pr-12 sm:pr-0">
+          <h1 class="mb-10 mt-[9px]">Storage</h1>
+          
+
+          <p>In Loco Storage, we facilitate working with files through multiple operations. Storage can be in-memory, on disk, or use cloud services such as AWS S3, GCP, and Azure.</p>
+<p>Loco supports simple storage operations and advanced features like mirroring data or backup strategies with different failure modes.</p>
+<p>By default, in-memory and disk storage come out of the box. To work with cloud providers, you should specify the following features:</p>
+<ul>
+<li><code>storage_aws_s3</code></li>
+<li><code>storage_azure</code></li>
+<li><code>storage_gcp</code></li>
+<li><code>all_storage</code></li>
+</ul>
+<p>By default loco initialize a <code>Null</code> provider, meaning any work with the storage will return an error.</p>
+<h2 id="setup">Setup</h2>
+<p>Add the <code>after_context</code> function as a Hook in the <code>app.rs</code> file and import the <code>storage</code> module from <code>loco_rs</code>.</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-keyword z-other z-rust">use</span> <span class="z-meta z-path z-rust">loco_rs<span class="z-punctuation z-accessor z-rust">::</span></span>storage<span class="z-punctuation z-terminator z-rust">;</span>
+</span><span class="z-source z-rust">
+</span><span class="z-source z-rust">async <span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">after_context</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">(</span><span class="z-variable z-parameter z-rust">ctx</span><span class="z-punctuation z-separator z-rust">:</span> AppContext</span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">)</span></span></span></span><span class="z-meta z-function z-rust"> <span class="z-meta z-function z-return-type z-rust"><span class="z-punctuation z-separator z-rust">-&gt;</span> <span class="z-meta z-generic z-rust"><span class="z-support z-type z-rust">Result</span><span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span>AppContext<span class="z-punctuation z-definition z-generic z-end z-rust">&gt;</span></span></span> </span><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    <span class="z-support z-type z-rust">Ok</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>ctx</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></code></pre>
+<p>This hook returns a Storage instance that holds all storage configurations, covered in the next sections. This Storage instance is stored as part of the application context and is available in controllers, endpoints, task workers, and more.</p>
+<h2 id="glossary">Glossary</h2>
+<table><thead><tr><th></th><th></th></tr></thead><tbody>
+<tr><td><code>StorageDriver</code></td><td>Trait implementation something that does storage</td></tr>
+<tr><td><code>Storage</code></td><td>Abstraction implementation for managing one or more storage drivers.</td></tr>
+<tr><td><code>Strategy</code></td><td>Trait implementing various strategies for Storage, such as mirror or backup.</td></tr>
+<tr><td><code>FailureMode</code></td><td>Implemented within each Strategy, determining how to handle operations in case of failures.</td></tr>
+</tbody></table>
+<h3 id="initialize-storage">Initialize Storage</h3>
+<p>Storage can be configured with a single driver or multiple drivers.</p>
+<h4 id="single-store">Single Store</h4>
+<p>In this example, we initialize the in-memory driver and create a new storage with the single function.</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-keyword z-other z-rust">use</span> <span class="z-meta z-path z-rust">loco_rs<span class="z-punctuation z-accessor z-rust">::</span></span>storage<span class="z-punctuation z-terminator z-rust">;</span>
+</span><span class="z-source z-rust">
+</span><span class="z-source z-rust">async <span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">after_context</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">(</span><span class="z-variable z-parameter z-rust">ctx</span><span class="z-punctuation z-separator z-rust">:</span> AppContext</span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">)</span></span></span></span><span class="z-meta z-function z-rust"> <span class="z-meta z-function z-return-type z-rust"><span class="z-punctuation z-separator z-rust">-&gt;</span> <span class="z-meta z-generic z-rust"><span class="z-support z-type z-rust">Result</span><span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span>AppContext<span class="z-punctuation z-definition z-generic z-end z-rust">&gt;</span></span></span> </span><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    <span class="z-support z-type z-rust">Ok</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>AppContext <span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-block z-rust">        storage<span class="z-punctuation z-separator z-rust">:</span> <span class="z-meta z-path z-rust">Storage<span class="z-punctuation z-accessor z-rust">::</span></span>single<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-meta z-path z-rust">storage<span class="z-punctuation z-accessor z-rust">::</span></span><span class="z-meta z-path z-rust">drivers<span class="z-punctuation z-accessor z-rust">::</span></span><span class="z-meta z-path z-rust">mem<span class="z-punctuation z-accessor z-rust">::</span></span>new<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">into</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-separator z-rust">,</span>
+</span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-block z-rust">        <span class="z-keyword z-operator z-range z-rust">..</span>ctx
+</span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-block z-rust">    </span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></code></pre>
+<h3 id="multiple-drivers">Multiple Drivers</h3>
+<p>For advanced usage, you can set up multiple drivers and apply smart strategies that come out of the box. Each strategy has its own set of failure modes that you can decide how to handle.</p>
+<p>Creating multiple drivers:</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-keyword z-other z-rust">use</span> <span class="z-keyword z-other z-rust">crate</span><span class="z-meta z-path z-rust"><span class="z-punctuation z-accessor z-rust">::</span></span><span class="z-meta z-path z-rust">storage<span class="z-punctuation z-accessor z-rust">::</span></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>drivers<span class="z-punctuation z-separator z-rust">,</span> Storage</span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span><span class="z-source z-rust">
+</span><span class="z-source z-rust"><span class="z-storage z-type z-rust">let</span> aws_1 <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-meta z-path z-rust">drivers<span class="z-punctuation z-accessor z-rust">::</span></span><span class="z-meta z-path z-rust">aws<span class="z-punctuation z-accessor z-rust">::</span></span>new<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>users<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span><span class="z-source z-rust"><span class="z-storage z-type z-rust">let</span> azure <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-meta z-path z-rust">drivers<span class="z-punctuation z-accessor z-rust">::</span></span><span class="z-meta z-path z-rust">azure<span class="z-punctuation z-accessor z-rust">::</span></span>new<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>users<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span><span class="z-source z-rust"><span class="z-storage z-type z-rust">let</span> aws_2 <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-meta z-path z-rust">drivers<span class="z-punctuation z-accessor z-rust">::</span></span><span class="z-meta z-path z-rust">aws<span class="z-punctuation z-accessor z-rust">::</span></span>new<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>users-mirror<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></code></pre>
+<h4 id="mirror-strategy">Mirror Strategy:</h4>
+<p>You can keep multiple services in sync by defining a mirror service. A mirror service <strong>replicates</strong> uploads, deletes, rename and copy across two or more subordinate services. The download behavior redundantly retrieves data, meaning if the file retrieval fails from the primary, the first file found in the secondaries is returned.</p>
+<h4 id="behaviour">Behaviour</h4>
+<p>After creating the three store instances, we need to create the mirror strategy instance and define the failure mode. The mirror strategy expects the primary store and a list of secondary stores, along with failure mode options:</p>
+<ul>
+<li><code>MirrorAll</code>: All secondary storages must succeed. If one fails, the operation continues to the rest but returns an error.</li>
+<li><code>AllowMirrorFailure</code>: The operation does not return an error when one or more mirror operations fail.</li>
+</ul>
+<p>The failure mode is relevant for upload, delete, move, and copy.</p>
+<p>Example:</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust">
+</span><span class="z-source z-rust"><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> Define the mirror strategy by setting the primary store and secondary stores by names.
+</span></span><span class="z-source z-rust"><span class="z-storage z-type z-rust">let</span> strategy <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-support z-type z-rust">Box</span><span class="z-meta z-path z-rust"><span class="z-punctuation z-accessor z-rust">::</span></span>new<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-meta z-path z-rust">MirrorStrategy<span class="z-punctuation z-accessor z-rust">::</span></span>new<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-group z-rust">    <span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>store_1<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-separator z-rust">,</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-group z-rust">    <span class="z-support z-type z-rust">Some</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-support z-macro z-rust">vec!</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">[</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>store_2<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">to_string</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-separator z-rust">,</span> <span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>store_3<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">to_string</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-section z-group z-end z-rust">]</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-separator z-rust">,</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-group z-rust">    <span class="z-meta z-path z-rust">FailureMode<span class="z-punctuation z-accessor z-rust">::</span></span>MirrorAll<span class="z-punctuation z-separator z-rust">,</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-group z-rust"></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span> <span class="z-keyword z-operator z-rust">as</span> <span class="z-meta z-generic z-rust"><span class="z-support z-type z-rust">Box</span><span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span>dyn StorageStrategy<span class="z-punctuation z-definition z-generic z-end z-rust">&gt;</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span><span class="z-source z-rust">
+</span><span class="z-source z-rust"><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> Create the storage with the store mapping and the strategy.
+</span></span><span class="z-source z-rust"> <span class="z-storage z-type z-rust">let</span> storage <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-meta z-path z-rust">Storage<span class="z-punctuation z-accessor z-rust">::</span></span>new<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>
+</span></span><span class="z-source z-rust"><span class="z-meta z-group z-rust">    <span class="z-meta z-path z-rust">BTreeMap<span class="z-punctuation z-accessor z-rust">::</span></span>from<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">[</span>
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-group z-rust">        <span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>store_1<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">to_string</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-separator z-rust">,</span> aws_1</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-separator z-rust">,</span>
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-group z-rust">        <span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>store_2<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">to_string</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-separator z-rust">,</span> azure</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-separator z-rust">,</span>
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-group z-rust">        <span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>store_3<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">to_string</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-separator z-rust">,</span> aws_2</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-separator z-rust">,</span>
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-group z-rust">    <span class="z-punctuation z-section z-group z-end z-rust">]</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-separator z-rust">,</span>
+</span></span><span class="z-source z-rust"><span class="z-meta z-group z-rust">    strategy<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">into</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-separator z-rust">,</span>
+</span></span><span class="z-source z-rust"><span class="z-meta z-group z-rust"></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></code></pre>
+<h3 id="backup-strategy">Backup Strategy:</h3>
+<p>You can back up your operations across multiple storages and control the failure mode policy.</p>
+<p>After creating the three store instances, we need to create the backup strategy instance and define the failure mode. The backup strategy expects the primary store and a list of secondary stores, along with failure mode options:</p>
+<ul>
+<li><code>BackupAll</code>: All secondary storages must succeed. If one fails, the operation continues to the rest but returns an error.</li>
+<li><code>AllowBackupFailure</code>: The operation does not return an error when one or more backup operations fail.</li>
+<li><code>AtLeastOneFailure</code>: At least one operation should pass.</li>
+<li><code>CountFailure</code>: The given number of backups should pass.</li>
+</ul>
+<p>The failure mode is relevant for upload, delete, move, and copy. The download always retrieves the file from the primary.</p>
+<p>Example:</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust">
+</span><span class="z-source z-rust"><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> Define the backup strategy by setting the primary store and secondary stores by names.
+</span></span><span class="z-source z-rust"><span class="z-storage z-type z-rust">let</span> strategy<span class="z-punctuation z-separator z-rust">:</span> <span class="z-meta z-generic z-rust"><span class="z-support z-type z-rust">Box</span><span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span>dyn StorageStrategy<span class="z-punctuation z-definition z-generic z-end z-rust">&gt;</span></span> <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-support z-type z-rust">Box</span><span class="z-meta z-path z-rust"><span class="z-punctuation z-accessor z-rust">::</span></span>new<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-meta z-path z-rust">BackupStrategy<span class="z-punctuation z-accessor z-rust">::</span></span>new<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-group z-rust">    <span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>store_1<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-separator z-rust">,</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-group z-rust">    <span class="z-support z-type z-rust">Some</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-support z-macro z-rust">vec!</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">[</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>store_2<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">to_string</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-separator z-rust">,</span> <span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>store_3<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">to_string</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-section z-group z-end z-rust">]</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-separator z-rust">,</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-group z-rust">    <span class="z-meta z-path z-rust">FailureMode<span class="z-punctuation z-accessor z-rust">::</span></span>AllowBackupFailure<span class="z-punctuation z-separator z-rust">,</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-group z-rust"></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span> <span class="z-keyword z-operator z-rust">as</span> <span class="z-meta z-generic z-rust"><span class="z-support z-type z-rust">Box</span><span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span>dyn StorageStrategy<span class="z-punctuation z-definition z-generic z-end z-rust">&gt;</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span><span class="z-source z-rust">
+</span><span class="z-source z-rust"><span class="z-storage z-type z-rust">let</span> storage <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-meta z-path z-rust">Storage<span class="z-punctuation z-accessor z-rust">::</span></span>new<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>
+</span></span><span class="z-source z-rust"><span class="z-meta z-group z-rust">    <span class="z-meta z-path z-rust">BTreeMap<span class="z-punctuation z-accessor z-rust">::</span></span>from<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">[</span>
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-group z-rust">        <span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>store_1<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">to_string</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-separator z-rust">,</span> store_1</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-separator z-rust">,</span>
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-group z-rust">        <span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>store_2<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">to_string</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-separator z-rust">,</span> store_2</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-separator z-rust">,</span>
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-group z-rust">        <span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>store_3<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">to_string</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-separator z-rust">,</span> store_3</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-separator z-rust">,</span>
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-group z-rust">    <span class="z-punctuation z-section z-group z-end z-rust">]</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-separator z-rust">,</span>
+</span></span><span class="z-source z-rust"><span class="z-meta z-group z-rust">    strategy<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">into</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-separator z-rust">,</span>
+</span></span><span class="z-source z-rust"><span class="z-meta z-group z-rust"></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></code></pre>
+<h2 id="create-your-own-strategy">Create Your Own Strategy</h2>
+<p>In case you have a specific strategy, you can easily create it by implementing the StorageStrategy and implementing all store functionality.</p>
+<h2 id="usage-in-controller">Usage In Controller</h2>
+<p>Follow this example, make sure you enable <code>multipart</code> feature in axum crate.</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust">async <span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">upload_file</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">(</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust">    State<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-variable z-parameter z-rust">ctx</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span>: <span class="z-meta z-generic z-rust">State<span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span>AppContext<span class="z-punctuation z-definition z-generic z-end z-rust">&gt;</span></span>,
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust">    <span class="z-storage z-modifier z-rust">mut</span> <span class="z-variable z-parameter z-rust">multipart</span><span class="z-punctuation z-separator z-rust">:</span> Multipart,
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">)</span></span></span></span><span class="z-meta z-function z-rust"> <span class="z-meta z-function z-return-type z-rust"><span class="z-punctuation z-separator z-rust">-&gt;</span> <span class="z-meta z-generic z-rust"><span class="z-support z-type z-rust">Result</span><span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span>Response<span class="z-punctuation z-definition z-generic z-end z-rust">&gt;</span></span></span> </span><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    <span class="z-storage z-type z-rust">let</span> <span class="z-storage z-modifier z-rust">mut</span> file <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-support z-type z-rust">None</span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    <span class="z-keyword z-control z-rust">while</span> <span class="z-storage z-type z-rust">let</span> <span class="z-support z-type z-rust">Some</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>field</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span> <span class="z-keyword z-operator z-assignment z-rust">=</span> multipart<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">next_field</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span>await<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">map_err</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">|</span></span></span><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-variable z-parameter z-rust">err</span><span class="z-punctuation z-section z-parameters z-end z-rust">|</span></span> </span><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">        <span class="z-meta z-path z-rust">tracing<span class="z-punctuation z-accessor z-rust">::</span></span>error<span class="z-keyword z-operator z-logical z-rust">!</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>error <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-keyword z-operator z-rust">?</span>err<span class="z-punctuation z-separator z-rust">,</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>could not readd multipart<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">        <span class="z-meta z-path z-rust">Error<span class="z-punctuation z-accessor z-rust">::</span></span>BadRequest<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>could not readd multipart<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">into</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span>
+</span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">    </span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-keyword z-operator z-rust">?</span> <span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-block z-rust">        <span class="z-storage z-type z-rust">let</span> file_name <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-keyword z-control z-rust">match</span> field<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">file_name</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span> <span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-block z-rust">            <span class="z-support z-type z-rust">Some</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>file_name</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span> <span class="z-keyword z-operator z-rust">=&gt;</span> file_name<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">to_string</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-separator z-rust">,</span>
+</span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-block z-rust">            <span class="z-keyword z-operator z-rust">_</span> <span class="z-keyword z-operator z-rust">=&gt;</span> <span class="z-keyword z-control z-rust">return</span> <span class="z-support z-type z-rust">Err</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-meta z-path z-rust">Error<span class="z-punctuation z-accessor z-rust">::</span></span>BadRequest<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>file name not found<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">into</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-separator z-rust">,</span>
+</span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-block z-rust">        </span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-block z-rust">
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-block z-rust">        <span class="z-storage z-type z-rust">let</span> content <span class="z-keyword z-operator z-assignment z-rust">=</span> field<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">bytes</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span>await<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">map_err</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">|</span></span></span><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-variable z-parameter z-rust">err</span><span class="z-punctuation z-section z-parameters z-end z-rust">|</span></span> </span><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">            <span class="z-meta z-path z-rust">tracing<span class="z-punctuation z-accessor z-rust">::</span></span>error<span class="z-keyword z-operator z-logical z-rust">!</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>error <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-keyword z-operator z-rust">?</span>err<span class="z-punctuation z-separator z-rust">,</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>could not readd bytes<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">            <span class="z-meta z-path z-rust">Error<span class="z-punctuation z-accessor z-rust">::</span></span>BadRequest<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>could not readd bytes<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">into</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span>
+</span></span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">        </span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-keyword z-operator z-rust">?</span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-block z-rust">
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-block z-rust">        <span class="z-storage z-type z-rust">let</span> path <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-meta z-path z-rust">PathBuf<span class="z-punctuation z-accessor z-rust">::</span></span>from<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>folder<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">join</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>file_name</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-block z-rust">        ctx<span class="z-punctuation z-accessor z-dot z-rust">.</span>storage<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">as_ref</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">upload</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>path<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">as_path</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-separator z-rust">,</span> <span class="z-keyword z-operator z-bitwise z-rust">&amp;</span>content</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span>await<span class="z-keyword z-operator z-rust">?</span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-block z-rust">
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-block z-rust">        file <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-support z-type z-rust">Some</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>path</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-block z-rust">    </span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    file<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">map_or_else</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>not_found<span class="z-punctuation z-separator z-rust">,</span> <span class="z-meta z-function z-closure z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">|</span></span></span><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-variable z-parameter z-rust">path</span><span class="z-punctuation z-section z-parameters z-end z-rust">|</span></span> </span><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">        <span class="z-meta z-path z-rust">format<span class="z-punctuation z-accessor z-rust">::</span></span>json<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-meta z-path z-rust">views<span class="z-punctuation z-accessor z-rust">::</span></span><span class="z-meta z-path z-rust">upload<span class="z-punctuation z-accessor z-rust">::</span></span><span class="z-meta z-path z-rust">Response<span class="z-punctuation z-accessor z-rust">::</span></span>new<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>path<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">as_path</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span>
+</span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">    </span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></code></pre>
+<h1 id="testing">Testing</h1>
+<p>By testing file storage in your controller you can follow this example:</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-keyword z-other z-rust">use</span> <span class="z-meta z-path z-rust">loco_rs<span class="z-punctuation z-accessor z-rust">::</span></span><span class="z-meta z-path z-rust">testing<span class="z-punctuation z-accessor z-rust">::</span></span><span class="z-meta z-path z-rust">prelude<span class="z-punctuation z-accessor z-rust">::</span></span><span class="z-keyword z-operator z-arithmetic z-rust">*</span><span class="z-punctuation z-terminator z-rust">;</span>
+</span><span class="z-source z-rust">
+</span><span class="z-source z-rust"><span class="z-meta z-annotation z-rust"><span class="z-punctuation z-definition z-annotation z-rust">#</span><span class="z-punctuation z-section z-group z-begin z-rust">[</span><span class="z-variable z-annotation z-rust">tokio</span>::<span class="z-variable z-annotation z-rust">test</span><span class="z-punctuation z-section z-group z-end z-rust">]</span></span>
+</span><span class="z-source z-rust"><span class="z-meta z-annotation z-rust"><span class="z-punctuation z-definition z-annotation z-rust">#</span><span class="z-punctuation z-section z-group z-begin z-rust">[</span><span class="z-variable z-annotation z-rust">serial</span><span class="z-punctuation z-section z-group z-end z-rust">]</span></span>
+</span><span class="z-source z-rust">async <span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">can_register</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">(</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">)</span></span></span></span><span class="z-meta z-function z-rust"> </span><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    <span class="z-meta z-path z-rust">request<span class="z-punctuation z-accessor z-rust">::</span></span><span class="z-meta z-generic z-rust"><span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span>App, <span class="z-keyword z-operator z-rust">_</span>, <span class="z-keyword z-operator z-rust">_</span><span class="z-punctuation z-definition z-generic z-end z-rust">&gt;</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">|</span></span></span><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-variable z-parameter z-rust">request</span><span class="z-punctuation z-separator z-rust">,</span> <span class="z-variable z-parameter z-rust">ctx</span><span class="z-punctuation z-section z-parameters z-end z-rust">|</span></span> </span><span class="z-meta z-function z-closure z-rust">async <span class="z-storage z-modifier z-rust">move</span> <span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">        <span class="z-storage z-type z-rust">let</span> file_content <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>loco file upload<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">        <span class="z-storage z-type z-rust">let</span> file_part <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-meta z-path z-rust">Part<span class="z-punctuation z-accessor z-rust">::</span></span>bytes<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>file_content<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">as_bytes</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">file_name</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>loco.txt<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">
+</span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">        <span class="z-storage z-type z-rust">let</span> multipart_form <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-meta z-path z-rust">MultipartForm<span class="z-punctuation z-accessor z-rust">::</span></span>new<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">add_part</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>file<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-separator z-rust">,</span> file_part</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">
+</span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">        <span class="z-storage z-type z-rust">let</span> response <span class="z-keyword z-operator z-assignment z-rust">=</span> request<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">post</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>/upload/file<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">multipart</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>multipart_form</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span>await<span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">
+</span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">        response<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">assert_status_ok</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">
+</span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">        <span class="z-storage z-type z-rust">let</span> res<span class="z-punctuation z-separator z-rust">:</span> <span class="z-meta z-path z-rust">views<span class="z-punctuation z-accessor z-rust">::</span></span><span class="z-meta z-path z-rust">upload<span class="z-punctuation z-accessor z-rust">::</span></span>Response <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-meta z-path z-rust">serde_json<span class="z-punctuation z-accessor z-rust">::</span></span>from_str<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-keyword z-operator z-bitwise z-rust">&amp;</span>response<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">text</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">unwrap</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">
+</span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">        <span class="z-storage z-type z-rust">let</span> stored_file<span class="z-punctuation z-separator z-rust">:</span> <span class="z-support z-type z-rust">String</span> <span class="z-keyword z-operator z-assignment z-rust">=</span> ctx<span class="z-punctuation z-accessor z-dot z-rust">.</span>storage<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">as_ref</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">download</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-keyword z-operator z-bitwise z-rust">&amp;</span>res<span class="z-punctuation z-accessor z-dot z-rust">.</span>path</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span>await<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">unwrap</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">
+</span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">        <span class="z-support z-macro z-rust">assert_eq!</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>stored_file<span class="z-punctuation z-separator z-rust">,</span> file_content</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-function z-closure z-rust"><span class="z-meta z-block z-rust">    </span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    <span class="z-punctuation z-accessor z-dot z-rust">.</span>await<span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></code></pre>
+
+        </div>
+        
+        
+<div class="flex items-center justify-between px-2">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <a href="https://&/#x2F;&#x2F;loco.rs&#x2F;docs&#x2F;processing&#x2F;scheduler&#x2F;" target="_blank" rel="noopener">
+    <div class="card my-1">
+      <div class="card-body py-2">
+        &larr; Scheduler
+      </div>
+    </div>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <a class="ms-auto" href="https://&/#x2F;&#x2F;loco.rs&#x2F;docs&#x2F;infrastructure&#x2F;cache&#x2F;" target="_blank" rel="noopener">
+    <div class="card my-1">
+      <div class="card-body py-2">
+        Cache &rarr;
+      </div>
+    </div>
+  </a>
+  
+</div>
+
+      </div>
+
+      <div class="hidden text-sm xl:block">
+        <div class="bg-gray-50 p-2 mt-[90px] border border-gray-200 rounded-sm dark:bg-zinc-900">
+        
+
+<nav>
+	<ul>
+		
+		<li class="mb-1 px-2 py-1 text-sm font-semibold"><a href="index.html">Setup</a></li>
+		
+		
+		<li class="mb-1 px-2 py-1 text-sm font-semibold"><a href="index.html">Glossary</a></li>
+		
+		<ul>
+			
+			<li
+				class="group flex w-full items-center border border-transparent pl-5 px-2 py-1 hover:underline text-sm  text-foreground">
+				<a href="index.html">Initialize Storage</a>
+			</li>
+			
+			<li
+				class="group flex w-full items-center border border-transparent pl-5 px-2 py-1 hover:underline text-sm  text-foreground">
+				<a href="index.html">Multiple Drivers</a>
+			</li>
+			
+			<li
+				class="group flex w-full items-center border border-transparent pl-5 px-2 py-1 hover:underline text-sm  text-foreground">
+				<a href="index.html">Backup Strategy:</a>
+			</li>
+			
+		</ul>
+		
+		
+		<li class="mb-1 px-2 py-1 text-sm font-semibold"><a href="index.html">Create Your Own Strategy</a></li>
+		
+		
+		<li class="mb-1 px-2 py-1 text-sm font-semibold"><a href="index.html">Usage In Controller</a></li>
+		
+		
+		<li class="mb-1 px-2 py-1 text-sm font-semibold"><a href="index.html">Testing</a></li>
+		
+		
+	</ul>
+</nav>
+
+
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+
+
+</div>
+
+
+</div>
+
+  </div>
+
+  
+<div class="section bg-redrust dark:bg-zinc-800 pt-8">
+  <div class="container flex flex-col items-center text-center text-background py-8 pb-12">
+      <div class="mb-8">
+      <img src="https://loco.rs/icon.svg" width="130px" />
+      </div>
+      <div class="footer-links">
+          <a href="https://github.com/loco-rs/loco" target="_blank" rel="noopener">
+              Github
+          </a>
+          <a href="https://github.com/loco-rs/loco/blob/master/CODE_OF_CONDUCT.md" target="_blank" rel="noopener">
+              Code of Conduct
+          </a>
+          <a href="https://github.com/loco-rs/loco/blob/master/LICENSE" target="_blank" rel="noopener">
+              License
+          </a>
+          <a href="https://github.com/loco-rs/loco/blob/master/SECURITY.md" target="_blank" rel="noopener">
+              Security
+          </a>
+      </div>
+  </div>
+</div>
+
+  
+<script type="text/javascript" src="https://loco.rs/js/main.js" defer></script>
+
+  <script type="text/javascript" src="https://loco.rs/plugins/elasticlunr.min.js" defer></script>
+  <script type="text/javascript" src="https://loco.rs/search_index.en.js" defer></script>
+  <script type="text/javascript" src="https://loco.rs/js/search.js" defer></script>
+
+
+
+</body>
+
+</html>

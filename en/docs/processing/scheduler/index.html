@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang=" en-US" >
+<head>
+     
+
+    
+    
+    
+      <title>
+           Scheduler - Loco.rs
+          
+      </title>
+
+      
+          <meta property="og:title" content="Scheduler - Loco.rs" />
+          <meta property="og:title" content="Scheduler - Loco.rs">  
+          <meta name="twitter:title" content="Scheduler - Loco.rs"> 
+      
+    
+
+
+     
+         
+             <meta property="og:description" content="Loco.rs is like Ruby on Rails for Rust. Use it to quickly build and deploy Rust based apps from zero to production." />
+         
+     
+
+     
+         
+             <meta name="description" content="Loco.rs is like Ruby on Rails for Rust. Use it to quickly build and deploy Rust based apps from zero to production." />
+         
+    
+
+
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+  <meta property="og:image" content="https://loco.rs/apple-touch-icon@x4.png">
+
+  <meta name="twitter:card" content="summary_large_image"> 
+  <meta name="twitter:description" content="Loco.rs is like Ruby on Rails for Rust. Use it to quickly build and deploy Rust based apps from zero to production.">
+  <meta name="twitter:image" content="https://loco.rs/apple-touch-icon@x4.png">
+  
+  
+
+  <link rel="stylesheet" type="text/css" href=https://loco.rs/styles/styles.css />
+  <link rel="stylesheet" type="text/css" href=https://loco.rs/syntax-theme-light.css />
+  <link rel="stylesheet" type="text/css" href=https://loco.rs/syntax-theme-dark.css />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800" rel="stylesheet">
+
+  <link rel="apple-touch-icon" sizes="180x180" href=https://loco.rs/apple-touch-icon.png>
+  <link rel="icon" type="image/png" href=https://loco.rs/favicon-32x32.png>
+
+</head>
+
+<body class="bg-background">
+  <div class="dark"></div>
+  <div class="relative flex min-h-screen flex-col ">
+    
+
+
+
+<header
+	class=" sticky top-0 z-50 w-full border-border/40 backdrop-blur bg-background">
+	<div class="container relative flex h-14 md:grid md:grid-cols-[240px_minmax(0,1fr)] xl:max-w-[80rem]">
+		<div class="mr-4 hidden sm:flex">
+			<a class="flex mr-4  items-center space-x-2" href="../../../index.html">
+				<img src="https://loco.rs/icon.svg" width="30px" />
+			</a>
+			<nav class="flex w-full bg-transparent items-center gap-4 text-sm">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link text-black dark:text-white  active" href="../../getting-started/tour/index.html">Docs
+				</a>
+				
+				<a class="nav-link text-black dark:text-white " href="../../../blog/index.html">Blog
+				</a>
+				
+				<a class="nav-link text-black dark:text-white " href="../../../casts/index.html">Casts
+				</a>
+				
+				
+			</nav>
+		</div>
+
+		<div class="flex items-center sm:hidden">
+				<button onclick="toggleMenu()"
+					class="inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 py-2 mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+					type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:R15u6ja:" data-state="closed">
+					<svg stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
+						<path d="M3 5H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+						</path>
+						<path d="M3 12H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+						</path>
+						<path d="M3 19H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+						</path>
+					</svg>
+					<span class="sr-only">Toggle Menu</span>
+				</button>
+
+				<div class="absolute mt-[106px] left-0 right-0">
+						<nav id="menu-toggle" class="flex hidden bg-background  items-center gap-4 text-sm py-[15px] px-2 w-full">
+							<a class="flex items-center" href="../../../index.html">
+								<img src="https://loco.rs/icon.svg" width="30px" />
+							</a>
+							
+							
+							
+							
+							
+							
+							<a class="nav-link text-black dark:text-white  active" href="../../getting-started/tour/index.html">Docs
+							</a>
+							
+							<a class="nav-link text-black dark:text-white " href="../../../blog/index.html">Blog
+							</a>
+							
+							<a class="nav-link text-black dark:text-white " href="../../../casts/index.html">Casts
+							</a>
+							
+							
+						</nav>
+		</div>
+		</div>
+
+		<div class="flex flex-1 items-center justify-between space-x-2">
+		
+			
+			<div class="flex-1 lg:flex lg:justify-end">
+				<form class="navbar-form flex-grow-1 order-7 order-md-3">
+					<input id="userinput"
+						class="placeholder-black dark:placeholder-white bg-transparent   inline-flex items-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-accent hover:text-accent-foreground px-4 py-2 relative h-8 w-full justify-start rounded-[0.5rem] bg-muted/50 text-sm font-normal shadow-none sm:pr-12 lg:max-w-64"
+						type="search" placeholder="Search docs..." aria-label="Search docs..." autocomplete="off">
+		
+					<div id="suggestions" class="shadow  rounded"></div>
+				</form>
+			</div>
+			
+		
+		
+		
+			<nav class="flex items-center">
+				<button id="mode" class="btn btn-link order-2 order-md-4" type="button" aria-label="Toggle mode">
+					<span class="toggle-dark hidden"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+							fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+							class="feather feather-moon">
+							<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+						</svg></span>
+					<span class="toggle-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+							fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+							class="feather feather-sun">
+							<circle cx="12" cy="12" r="5"></circle>
+							<line x1="12" y1="1" x2="12" y2="3"></line>
+							<line x1="12" y1="21" x2="12" y2="23"></line>
+							<line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+							<line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+							<line x1="1" y1="12" x2="3" y2="12"></line>
+							<line x1="21" y1="12" x2="23" y2="12"></line>
+							<line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+							<line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+						</svg></span>
+				</button>
+				
+				
+				<div
+					class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground py-2 h-8 w-8 px-0">
+					<a class="nav-link" href="https://twitter.com/jondot" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg><span class="sr-only">Twitter</span></a>
+				</div>
+				
+				<div
+					class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground py-2 h-8 w-8 px-0">
+					<a class="nav-link" href="https://github.com/loco-rs/loco" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg><span class="sr-only">GitHub</span></a>
+				</div>
+				
+				
+			</nav>
+		</div>
+	</div>
+</header>
+<!-- JavaScript to toggle menu visibility -->
+<script>
+	function toggleMenu() {
+		var menu = document.getElementById('menu-toggle');
+		menu.classList.toggle('hidden');
+	}
+</script>
+
+
+
+    
+<div role="document">
+  <div class="bg-redrust text-background dark:bg-zinc-900">
+    <div class="container xl:max-w-[80rem]">
+      <aside class="w-full">
+        
+<div class="lg:py-8">
+	<nav class="flex gap-5 md:gap-10 flex-wrap" aria-label="Main navigation">
+		
+		
+		
+		
+		
+		
+		
+		<div>
+			<h3 class="mb-4 py-1 text-sm font-semibold text-white border-b border-red-100">Getting Started</h3>
+			<ul class="mb-4">
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../getting-started/tour/index.html">A Quick Tour
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../getting-started/guide/index.html">The Loco Guide
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../getting-started/starters/index.html">Starters
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../getting-started/axum-users/index.html">Axum vs Loco
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		
+		
+		
+		<div>
+			<h3 class="mb-4 py-1 text-sm font-semibold text-white border-b border-red-100">The App</h3>
+			<ul class="mb-4">
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../the-app/your-project/index.html">Your Project
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../the-app/models/index.html">Models
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../the-app/views/index.html">Views
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../the-app/controller/index.html">Controllers
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		
+		
+		
+		<div>
+			<h3 class="mb-4 py-1 text-sm font-semibold text-white border-b border-red-100">Processing</h3>
+			<ul class="mb-4">
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../workers/index.html">Workers
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../mailers/index.html">Mailers
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../task/index.html">Tasks
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-white font-semibold "
+						href="index.html">Scheduler
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		
+		
+		
+		<div>
+			<h3 class="mb-4 py-1 text-sm font-semibold text-white border-b border-red-100">Infrastructure</h3>
+			<ul class="mb-4">
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../infrastructure/storage/index.html">Storage
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../infrastructure/cache/index.html">Cache
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../infrastructure/deployment/index.html">Deployment
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../infrastructure/data/index.html">Data
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		
+		
+		
+		<div>
+			<h3 class="mb-4 py-1 text-sm font-semibold text-white border-b border-red-100">Extras</h3>
+			<ul class="mb-4">
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../extras/authentication/index.html">Authentication
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../extras/websocket/index.html">Websocket
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../extras/pluggability/index.html">Pluggability
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../extras/upgrades/index.html">Upgrades
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		
+		
+		
+		<div>
+			<h3 class="mb-4 py-1 text-sm font-semibold text-white border-b border-red-100">Resources</h3>
+			<ul class="mb-4">
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../resources/around-the-web/index.html">Around the Web
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../resources/faq/index.html">FAQ
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		
+		
+	</nav>
+</div>
+
+      </aside>
+    </div>
+  </div>
+  <div
+    class="container flex-1 items-start">
+    <main class="py-6 xl:grid xl:grid-cols-[1fr_450px] xl:max-w-[80rem] xl:mx-auto">
+      <div class="mx-auto w-full min-w-0">
+        <div class="markdown prose dark:prose-invert max-w-[60rem] md:pr-12 sm:pr-0">
+          <h1 class="mb-10 mt-[9px]">Scheduler</h1>
+          
+
+          <p>Loco simplifies the traditional, often cumbersome <code>crontab</code> system, making it easier and more elegant to schedule cron jobs. The scheduler job can execute either a shell script command or run a registered <a href="../task/index.html">task</a>.</p>
+<h2 id="setting-up">Setting Up</h2>
+<p>Scheduler jobs can be configured via a your YAML scheduler setup file or as part of an environment YAML file.</p>
+<h3 id="1-your-dedicated-file">1. Your Dedicated File</h3>
+<p>Using a dedicated file provides a centralized place to configure all your scheduler jobs, making it easier to manage and maintain. You can start by generating a template file using the Loco generator command:</p>
+<pre data-lang="sh" class="language-sh z-code"><code class="language-sh" data-lang="sh"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">cargo</span></span><span class="z-meta z-function-call z-arguments z-shell"> loco generate scheduler</span>
+</span></code></pre>
+<p>This command creates a <code>scheduler.yaml</code> file under the <code>config</code> folder. You can then configure your jobs within this file.</p>
+<h3 id="2-environment-configuration-file">2. Environment Configuration File</h3>
+<p>You can also configure scheduler jobs per environment by adding the scheduler section to your environment's YAML configuration file:</p>
+<!-- <snip id="configuration-scheduler" inject_from="code" template="yaml"> -->
+<pre data-lang="yaml" class="language-yaml z-code"><code class="language-yaml" data-lang="yaml"><span class="z-source z-yaml"><span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">scheduler</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span>
+</span><span class="z-source z-yaml">  <span class="z-comment z-line z-number-sign z-yaml"><span class="z-punctuation z-definition z-comment z-line z-number-sign z-yaml">#</span> Location of shipping the command stdout and stderr.
+</span></span><span class="z-source z-yaml">  <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">output</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">stdout</span>
+</span><span class="z-source z-yaml">  <span class="z-comment z-line z-number-sign z-yaml"><span class="z-punctuation z-definition z-comment z-line z-number-sign z-yaml">#</span> A list of jobs to be scheduled.
+</span></span><span class="z-source z-yaml">  <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">jobs</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span>
+</span><span class="z-source z-yaml">    <span class="z-comment z-line z-number-sign z-yaml"><span class="z-punctuation z-definition z-comment z-line z-number-sign z-yaml">#</span> The name of the job.
+</span></span><span class="z-source z-yaml">    <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">write_content</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span>
+</span><span class="z-source z-yaml">      <span class="z-comment z-line z-number-sign z-yaml"><span class="z-punctuation z-definition z-comment z-line z-number-sign z-yaml">#</span> by default false meaning executing the the run value as a task. if true execute the run value as shell command
+</span></span><span class="z-source z-yaml">      <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">shell</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-constant z-language z-boolean z-yaml">true</span>
+</span><span class="z-source z-yaml">      <span class="z-comment z-line z-number-sign z-yaml"><span class="z-punctuation z-definition z-comment z-line z-number-sign z-yaml">#</span> command to run
+</span></span><span class="z-source z-yaml">      <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">run</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-quoted z-double z-yaml"><span class="z-punctuation z-definition z-string z-begin z-yaml">&quot;</span>echo loco &gt;&gt; ./scheduler.txt<span class="z-punctuation z-definition z-string z-end z-yaml">&quot;</span></span>
+</span><span class="z-source z-yaml">      <span class="z-comment z-line z-number-sign z-yaml"><span class="z-punctuation z-definition z-comment z-line z-number-sign z-yaml">#</span> The cron expression that defines the job&#39;s schedule. 
+</span></span><span class="z-source z-yaml">      <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">schedule</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">run every 1 second</span>
+</span><span class="z-source z-yaml">      <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">output</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">silent</span>
+</span><span class="z-source z-yaml">      <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">tags</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-meta z-flow-sequence z-yaml"><span class="z-punctuation z-definition z-sequence z-begin z-yaml">[</span><span class="z-string z-quoted z-single z-yaml"><span class="z-punctuation z-definition z-string z-begin z-yaml">&#39;</span>base<span class="z-punctuation z-definition z-string z-end z-yaml">&#39;</span></span><span class="z-punctuation z-separator z-sequence z-yaml">,</span> <span class="z-string z-quoted z-single z-yaml"><span class="z-punctuation z-definition z-string z-begin z-yaml">&#39;</span>infra<span class="z-punctuation z-definition z-string z-end z-yaml">&#39;</span></span><span class="z-punctuation z-definition z-sequence z-end z-yaml">]</span></span>
+</span><span class="z-source z-yaml">
+</span><span class="z-source z-yaml">    <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">run_task</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span>
+</span><span class="z-source z-yaml">      <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">run</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-quoted z-double z-yaml"><span class="z-punctuation z-definition z-string z-begin z-yaml">&quot;</span>foo<span class="z-punctuation z-definition z-string z-end z-yaml">&quot;</span></span>
+</span><span class="z-source z-yaml">      <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">schedule</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-quoted z-double z-yaml"><span class="z-punctuation z-definition z-string z-begin z-yaml">&quot;</span>at 10:00 am<span class="z-punctuation z-definition z-string z-end z-yaml">&quot;</span></span>
+</span><span class="z-source z-yaml">      <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">run_on_start</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-constant z-language z-boolean z-yaml">true</span>
+</span><span class="z-source z-yaml">
+</span><span class="z-source z-yaml">    <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">list_if_users</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span>
+</span><span class="z-source z-yaml">      <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">run</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-quoted z-double z-yaml"><span class="z-punctuation z-definition z-string z-begin z-yaml">&quot;</span>user_report<span class="z-punctuation z-definition z-string z-end z-yaml">&quot;</span></span>
+</span><span class="z-source z-yaml">      <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">shell</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-constant z-language z-boolean z-yaml">true</span>
+</span><span class="z-source z-yaml">      <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">schedule</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-quoted z-double z-yaml"><span class="z-punctuation z-definition z-string z-begin z-yaml">&quot;</span>* 2 * * * *<span class="z-punctuation z-definition z-string z-end z-yaml">&quot;</span></span>
+</span><span class="z-source z-yaml">      <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">tags</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-meta z-flow-sequence z-yaml"><span class="z-punctuation z-definition z-sequence z-begin z-yaml">[</span><span class="z-string z-quoted z-single z-yaml"><span class="z-punctuation z-definition z-string z-begin z-yaml">&#39;</span>base<span class="z-punctuation z-definition z-string z-end z-yaml">&#39;</span></span><span class="z-punctuation z-separator z-sequence z-yaml">,</span> <span class="z-string z-quoted z-single z-yaml"><span class="z-punctuation z-definition z-string z-begin z-yaml">&#39;</span>users<span class="z-punctuation z-definition z-string z-end z-yaml">&#39;</span></span><span class="z-punctuation z-definition z-sequence z-end z-yaml">]</span></span>
+</span></code></pre>
+<!-- </snip> -->
+<h2 id="scheduler-configuration">Scheduler Configuration</h2>
+<p>The scheduler configuration consists of the following elements:</p>
+<ul>
+<li><code>scheduler.output</code> (Optional): Sets the default output location for all jobs.
+<ul>
+<li><code>stdout:</code> Output to the console (default).</li>
+<li><code>silent:</code> Suppress all output.</li>
+</ul>
+</li>
+<li><code>scheduler.jobs:</code> A object of jobs to be scheduled, the object key describe the job name. Each job has:
+<ul>
+<li>
+<p><code>schedule</code>: The cron expression that defines the job's schedule.
+The cron get an english that convert to cron syntax or cron syntax itself.</p>
+<h5 id="english-to-cron"><em><strong>English to cron</strong></em></h5>
+<ul>
+<li>Examples:</li>
+<li>every 15 seconds</li>
+<li>run every minute</li>
+<li>fire every day at 4:00 pm</li>
+<li>at 10:00 am</li>
+<li>run at midnight on the 1st and 15th of the month</li>
+<li>On Sunday at 12:00</li>
+<li>7pm every Thursday</li>
+<li>midnight on Tuesdays</li>
+</ul>
+<h5 id="cron-syntax-format"><em><strong>Cron Syntax format:</strong></em></h5>
+<p>The cronjob should be UTC based</p>
+<pre data-lang="sh" class="language-sh z-code"><code class="language-sh" data-lang="sh"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sec</span></span><span class="z-meta z-function-call z-arguments z-shell">   min   hour   day of month   month   day of week   year</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">*</span></span><span class="z-meta z-function-call z-arguments z-shell">     <span class="z-keyword z-operator z-regexp z-quantifier z-shell">*</span>     <span class="z-keyword z-operator z-regexp z-quantifier z-shell">*</span>      <span class="z-keyword z-operator z-regexp z-quantifier z-shell">*</span>              <span class="z-keyword z-operator z-regexp z-quantifier z-shell">*</span>       <span class="z-keyword z-operator z-regexp z-quantifier z-shell">*</span>             <span class="z-keyword z-operator z-regexp z-quantifier z-shell">*</span></span>
+</span></code></pre>
+</li>
+<li>
+<p><code>run_on_start</code>: By default, <code>false</code>. If set to <code>true</code>, the job will also run at the start of the scheduler.</p>
+<ul>
+<li><code>shell</code>: by default <code>false</code> meaning executing the the <code>run</code> value as a task. if <code>true</code> execute the <code>run</code> value as shell command</li>
+<li><code>run</code>: Cronjob command to run.
+<ul>
+<li><code>Task:</code> The task name (with variables e.x <code>[TASK_NAME] KEY:VAl</code>. follow <a href="../task/index.html">here</a> to see task arguments ). Note that the <code>shell</code> field should be false.</li>
+<li><code>Shell</code>: Run a shell command (e.x <code>"echo loco &gt;&gt; ./scheduler.txt"</code>). Note that the <code>shell</code> field should be true.</li>
+</ul>
+</li>
+<li><code>tags</code> (Optional): A list of tags to categorize and manage the job.</li>
+<li><code>output</code> (Optional): Overrides the global <code>scheduler.output</code> for this job.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="verifying-the-configuration">Verifying the Configuration</h2>
+<p>After setting up your jobs, you can verify the configuration to ensure everything is correct.</p>
+<h3 id="1-when-using-a-dedicated-file">1. When using a dedicated file:</h3>
+<p>Run the following command to list the jobs from your scheduler file:</p>
+<!-- <snip id="scheduler-list-from-file-command" inject_from="yaml"  template="sh"> -->
+<pre data-lang="sh" class="language-sh z-code"><code class="language-sh" data-lang="sh"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">cargo</span></span><span class="z-meta z-function-call z-arguments z-shell"> loco scheduler<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>config</span> config/scheduler.yaml<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>list</span></span>
+</span></code></pre>
+<!-- </snip> -->
+<h3 id="2-when-using-environment-based-configuration">2. When using environment-based configuration:</h3>
+<p>To list jobs from the environment configuration, run:</p>
+<!-- <snip id="scheduler-list-from-env-setting-command" inject_from="yaml"  template="sh"> -->
+<pre data-lang="sh" class="language-sh z-code"><code class="language-sh" data-lang="sh"><span class="z-source z-shell z-bash"><span class="z-variable z-other z-readwrite z-assignment z-shell">LOCO_ENV</span><span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">production</span> <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">cargo</span></span><span class="z-meta z-function-call z-arguments z-shell"> loco scheduler<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>list</span></span>
+</span></code></pre>
+<!-- </snip> -->
+<h2 id="running-the-scheduler">Running the Scheduler</h2>
+<p>Once the configuration is verified, you can remove the <code>--list</code> flag to start running the scheduler. The scheduler will continuously execute jobs based on their schedule until a shutdown signal is received. When a signal is received, it gracefully terminates all running tasks and shuts down safely.</p>
+<h3 id="important-notes">Important Notes:</h3>
+<ul>
+<li>When a job is running, <code>Loco</code> spawns it in a new process, and all environment variables will propagate to the new job process.</li>
+<li>For tasks, ensure you run the scheduler with a valid environment by using the <code>--environment</code> flag or setting the <code>LOCO_ENV</code> environment variable. This ensures the correct environment and configuration are loaded for the task.</li>
+<li>You can pass variables to tasks by using the vars object in the task configuration.</li>
+</ul>
+<h2 id="running-a-single-scheduled-job-by-name">Running a Single Scheduled Job by Name</h2>
+<p>To run a specific scheduler job by its name, use the --name flag. This will execute a single job with the provided name.</p>
+<!-- <snip id="scheduler-run-job-by-name-command" inject_from="yaml"  template="sh"> -->
+<pre data-lang="sh" class="language-sh z-code"><code class="language-sh" data-lang="sh"><span class="z-source z-shell z-bash"><span class="z-variable z-other z-readwrite z-assignment z-shell">LOCO_ENV</span><span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">production</span> <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">cargo</span></span><span class="z-meta z-function-call z-arguments z-shell"> loco scheduler<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>name</span> <span class="z-string z-quoted z-single z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&#39;</span>JOB_NAME<span class="z-punctuation z-definition z-string z-end z-shell">&#39;</span></span></span>
+</span></code></pre>
+<!-- </snip> -->
+<p>This command will locate the job named <code>"Run command"</code> in your scheduler.yaml file and run it.</p>
+<h2 id="running-scheduled-jobs-by-tag">Running Scheduled Jobs by Tag</h2>
+<p>You can also run multiple jobs that share the same tag. Tags are useful for grouping related jobs together. For example, you might have several jobs that perform different types of maintenance tasks—such as database cleanup, cache invalidation, and log rotation—that you want to run together. Assigning them the same tag, like <code>maintenance</code>, allows you to execute them all at once.</p>
+<!-- <snip id="scheduler-run-job-by-tag-command" inject_from="yaml"  template="sh"> -->
+<pre data-lang="sh" class="language-sh z-code"><code class="language-sh" data-lang="sh"><span class="z-source z-shell z-bash"><span class="z-variable z-other z-readwrite z-assignment z-shell">LOCO_ENV</span><span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">production</span> <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">cargo</span></span><span class="z-meta z-function-call z-arguments z-shell"> loco scheduler<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>tag</span> <span class="z-string z-quoted z-single z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&#39;</span>maintenance<span class="z-punctuation z-definition z-string z-end z-shell">&#39;</span></span></span>
+</span></code></pre>
+<!-- </snip> -->
+<p>This command runs all jobs that have been tagged with <code>maintenance</code>, ensuring that all related jobs are executed in one go.</p>
+
+        </div>
+        
+        
+<div class="flex items-center justify-between px-2">
+  
+  
+  
+  
+  
+  <a href="https://&/#x2F;&#x2F;loco.rs&#x2F;docs&#x2F;processing&#x2F;task&#x2F;" target="_blank" rel="noopener">
+    <div class="card my-1">
+      <div class="card-body py-2">
+        &larr; Tasks
+      </div>
+    </div>
+  </a>
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <a class="ms-auto" href="https://&/#x2F;&#x2F;loco.rs&#x2F;docs&#x2F;infrastructure&#x2F;storage&#x2F;" target="_blank" rel="noopener">
+    <div class="card my-1">
+      <div class="card-body py-2">
+        Storage &rarr;
+      </div>
+    </div>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+      </div>
+
+      <div class="hidden text-sm xl:block">
+        <div class="bg-gray-50 p-2 mt-[90px] border border-gray-200 rounded-sm dark:bg-zinc-900">
+        
+
+<nav>
+	<ul>
+		
+		<li class="mb-1 px-2 py-1 text-sm font-semibold"><a href="index.html">Setting Up</a></li>
+		
+		<ul>
+			
+			<li
+				class="group flex w-full items-center border border-transparent pl-5 px-2 py-1 hover:underline text-sm  text-foreground">
+				<a href="index.html">1. Your Dedicated File</a>
+			</li>
+			
+			<li
+				class="group flex w-full items-center border border-transparent pl-5 px-2 py-1 hover:underline text-sm  text-foreground">
+				<a href="index.html">2. Environment Configuration File</a>
+			</li>
+			
+		</ul>
+		
+		
+		<li class="mb-1 px-2 py-1 text-sm font-semibold"><a href="index.html">Scheduler Configuration</a></li>
+		
+		<ul>
+			
+			<li
+				class="group flex w-full items-center border border-transparent pl-5 px-2 py-1 hover:underline text-sm  text-foreground">
+				<a href="index.html">English to cron</a>
+			</li>
+			
+			<li
+				class="group flex w-full items-center border border-transparent pl-5 px-2 py-1 hover:underline text-sm  text-foreground">
+				<a href="index.html">Cron Syntax format:</a>
+			</li>
+			
+		</ul>
+		
+		
+		<li class="mb-1 px-2 py-1 text-sm font-semibold"><a href="index.html">Verifying the Configuration</a></li>
+		
+		<ul>
+			
+			<li
+				class="group flex w-full items-center border border-transparent pl-5 px-2 py-1 hover:underline text-sm  text-foreground">
+				<a href="index.html">1. When using a dedicated file:</a>
+			</li>
+			
+			<li
+				class="group flex w-full items-center border border-transparent pl-5 px-2 py-1 hover:underline text-sm  text-foreground">
+				<a href="index.html">2. When using environment-based configuration:</a>
+			</li>
+			
+		</ul>
+		
+		
+		<li class="mb-1 px-2 py-1 text-sm font-semibold"><a href="index.html">Running the Scheduler</a></li>
+		
+		<ul>
+			
+			<li
+				class="group flex w-full items-center border border-transparent pl-5 px-2 py-1 hover:underline text-sm  text-foreground">
+				<a href="index.html">Important Notes:</a>
+			</li>
+			
+		</ul>
+		
+		
+		<li class="mb-1 px-2 py-1 text-sm font-semibold"><a href="index.html">Running a Single Scheduled Job by Name</a></li>
+		
+		
+		<li class="mb-1 px-2 py-1 text-sm font-semibold"><a href="index.html">Running Scheduled Jobs by Tag</a></li>
+		
+		
+	</ul>
+</nav>
+
+
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+
+
+</div>
+
+
+</div>
+
+  </div>
+
+  
+<div class="section bg-redrust dark:bg-zinc-800 pt-8">
+  <div class="container flex flex-col items-center text-center text-background py-8 pb-12">
+      <div class="mb-8">
+      <img src="https://loco.rs/icon.svg" width="130px" />
+      </div>
+      <div class="footer-links">
+          <a href="https://github.com/loco-rs/loco" target="_blank" rel="noopener">
+              Github
+          </a>
+          <a href="https://github.com/loco-rs/loco/blob/master/CODE_OF_CONDUCT.md" target="_blank" rel="noopener">
+              Code of Conduct
+          </a>
+          <a href="https://github.com/loco-rs/loco/blob/master/LICENSE" target="_blank" rel="noopener">
+              License
+          </a>
+          <a href="https://github.com/loco-rs/loco/blob/master/SECURITY.md" target="_blank" rel="noopener">
+              Security
+          </a>
+      </div>
+  </div>
+</div>
+
+  
+<script type="text/javascript" src="https://loco.rs/js/main.js" defer></script>
+
+  <script type="text/javascript" src="https://loco.rs/plugins/elasticlunr.min.js" defer></script>
+  <script type="text/javascript" src="https://loco.rs/search_index.en.js" defer></script>
+  <script type="text/javascript" src="https://loco.rs/js/search.js" defer></script>
+
+
+
+</body>
+
+</html>

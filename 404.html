@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Not Found - aidoc Documentation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            font-size: 4em;
+            margin: 0 0 20px 0;
+            font-weight: 300;
+        }
+        h2 {
+            font-size: 1.5em;
+            margin: 0 0 30px 0;
+            opacity: 0.9;
+        }
+        .links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .link {
+            display: inline-block;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .description {
+            margin: 20px 0;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>404</h1>
+        <h2>Page Not Found</h2>
+        <div class="description">
+            The page you're looking for doesn't exist in this documentation.
+        </div>
+        <div class="links">
+            <a href="/" class="link">🏠 Home</a>
+            <a href="/aidoc" class="link">📄 Page Index</a>
+            <a href="javascript:history.back()" class="link">← Go Back</a>
+        </div>
+    </div>
+    
+    <script>
+        // Auto-redirect to /aidoc if the URL looks like it might be a documentation path
+        const path = window.location.pathname;
+        if (path.includes('/docs/') && !sessionStorage.getItem('404-visited')) {
+            sessionStorage.setItem('404-visited', 'true');
+            setTimeout(() => {
+                window.location.href = '/aidoc';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

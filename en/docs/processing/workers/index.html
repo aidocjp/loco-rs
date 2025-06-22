@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang=" en-US" >
+<head>
+     
+
+    
+    
+    
+      <title>
+           Workers - Loco.rs
+          
+      </title>
+
+      
+          <meta property="og:title" content="Workers - Loco.rs" />
+          <meta property="og:title" content="Workers - Loco.rs">  
+          <meta name="twitter:title" content="Workers - Loco.rs"> 
+      
+    
+
+
+     
+         
+             <meta property="og:description" content="Loco.rs is like Ruby on Rails for Rust. Use it to quickly build and deploy Rust based apps from zero to production." />
+         
+     
+
+     
+         
+             <meta name="description" content="Loco.rs is like Ruby on Rails for Rust. Use it to quickly build and deploy Rust based apps from zero to production." />
+         
+    
+
+
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+  <meta property="og:image" content="https://loco.rs/apple-touch-icon@x4.png">
+
+  <meta name="twitter:card" content="summary_large_image"> 
+  <meta name="twitter:description" content="Loco.rs is like Ruby on Rails for Rust. Use it to quickly build and deploy Rust based apps from zero to production.">
+  <meta name="twitter:image" content="https://loco.rs/apple-touch-icon@x4.png">
+  
+  
+
+  <link rel="stylesheet" type="text/css" href=https://loco.rs/styles/styles.css />
+  <link rel="stylesheet" type="text/css" href=https://loco.rs/syntax-theme-light.css />
+  <link rel="stylesheet" type="text/css" href=https://loco.rs/syntax-theme-dark.css />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800" rel="stylesheet">
+
+  <link rel="apple-touch-icon" sizes="180x180" href=https://loco.rs/apple-touch-icon.png>
+  <link rel="icon" type="image/png" href=https://loco.rs/favicon-32x32.png>
+
+</head>
+
+<body class="bg-background">
+  <div class="dark"></div>
+  <div class="relative flex min-h-screen flex-col ">
+    
+
+
+
+<header
+	class=" sticky top-0 z-50 w-full border-border/40 backdrop-blur bg-background">
+	<div class="container relative flex h-14 md:grid md:grid-cols-[240px_minmax(0,1fr)] xl:max-w-[80rem]">
+		<div class="mr-4 hidden sm:flex">
+			<a class="flex mr-4  items-center space-x-2" href="../../../index.html">
+				<img src="https://loco.rs/icon.svg" width="30px" />
+			</a>
+			<nav class="flex w-full bg-transparent items-center gap-4 text-sm">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link text-black dark:text-white  active" href="../../getting-started/tour/index.html">Docs
+				</a>
+				
+				<a class="nav-link text-black dark:text-white " href="../../../blog/index.html">Blog
+				</a>
+				
+				<a class="nav-link text-black dark:text-white " href="../../../casts/index.html">Casts
+				</a>
+				
+				
+			</nav>
+		</div>
+
+		<div class="flex items-center sm:hidden">
+				<button onclick="toggleMenu()"
+					class="inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 py-2 mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+					type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:R15u6ja:" data-state="closed">
+					<svg stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
+						<path d="M3 5H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+						</path>
+						<path d="M3 12H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+						</path>
+						<path d="M3 19H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+						</path>
+					</svg>
+					<span class="sr-only">Toggle Menu</span>
+				</button>
+
+				<div class="absolute mt-[106px] left-0 right-0">
+						<nav id="menu-toggle" class="flex hidden bg-background  items-center gap-4 text-sm py-[15px] px-2 w-full">
+							<a class="flex items-center" href="../../../index.html">
+								<img src="https://loco.rs/icon.svg" width="30px" />
+							</a>
+							
+							
+							
+							
+							
+							
+							<a class="nav-link text-black dark:text-white  active" href="../../getting-started/tour/index.html">Docs
+							</a>
+							
+							<a class="nav-link text-black dark:text-white " href="../../../blog/index.html">Blog
+							</a>
+							
+							<a class="nav-link text-black dark:text-white " href="../../../casts/index.html">Casts
+							</a>
+							
+							
+						</nav>
+		</div>
+		</div>
+
+		<div class="flex flex-1 items-center justify-between space-x-2">
+		
+			
+			<div class="flex-1 lg:flex lg:justify-end">
+				<form class="navbar-form flex-grow-1 order-7 order-md-3">
+					<input id="userinput"
+						class="placeholder-black dark:placeholder-white bg-transparent   inline-flex items-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-accent hover:text-accent-foreground px-4 py-2 relative h-8 w-full justify-start rounded-[0.5rem] bg-muted/50 text-sm font-normal shadow-none sm:pr-12 lg:max-w-64"
+						type="search" placeholder="Search docs..." aria-label="Search docs..." autocomplete="off">
+		
+					<div id="suggestions" class="shadow  rounded"></div>
+				</form>
+			</div>
+			
+		
+		
+		
+			<nav class="flex items-center">
+				<button id="mode" class="btn btn-link order-2 order-md-4" type="button" aria-label="Toggle mode">
+					<span class="toggle-dark hidden"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+							fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+							class="feather feather-moon">
+							<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+						</svg></span>
+					<span class="toggle-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+							fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+							class="feather feather-sun">
+							<circle cx="12" cy="12" r="5"></circle>
+							<line x1="12" y1="1" x2="12" y2="3"></line>
+							<line x1="12" y1="21" x2="12" y2="23"></line>
+							<line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+							<line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+							<line x1="1" y1="12" x2="3" y2="12"></line>
+							<line x1="21" y1="12" x2="23" y2="12"></line>
+							<line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+							<line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+						</svg></span>
+				</button>
+				
+				
+				<div
+					class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground py-2 h-8 w-8 px-0">
+					<a class="nav-link" href="https://twitter.com/jondot" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg><span class="sr-only">Twitter</span></a>
+				</div>
+				
+				<div
+					class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground py-2 h-8 w-8 px-0">
+					<a class="nav-link" href="https://github.com/loco-rs/loco" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg><span class="sr-only">GitHub</span></a>
+				</div>
+				
+				
+			</nav>
+		</div>
+	</div>
+</header>
+<!-- JavaScript to toggle menu visibility -->
+<script>
+	function toggleMenu() {
+		var menu = document.getElementById('menu-toggle');
+		menu.classList.toggle('hidden');
+	}
+</script>
+
+
+
+    
+<div role="document">
+  <div class="bg-redrust text-background dark:bg-zinc-900">
+    <div class="container xl:max-w-[80rem]">
+      <aside class="w-full">
+        
+<div class="lg:py-8">
+	<nav class="flex gap-5 md:gap-10 flex-wrap" aria-label="Main navigation">
+		
+		
+		
+		
+		
+		
+		
+		<div>
+			<h3 class="mb-4 py-1 text-sm font-semibold text-white border-b border-red-100">Getting Started</h3>
+			<ul class="mb-4">
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../getting-started/tour/index.html">A Quick Tour
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../getting-started/guide/index.html">The Loco Guide
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../getting-started/starters/index.html">Starters
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../getting-started/axum-users/index.html">Axum vs Loco
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		
+		
+		
+		<div>
+			<h3 class="mb-4 py-1 text-sm font-semibold text-white border-b border-red-100">The App</h3>
+			<ul class="mb-4">
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../the-app/your-project/index.html">Your Project
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../the-app/models/index.html">Models
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../the-app/views/index.html">Views
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../the-app/controller/index.html">Controllers
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		
+		
+		
+		<div>
+			<h3 class="mb-4 py-1 text-sm font-semibold text-white border-b border-red-100">Processing</h3>
+			<ul class="mb-4">
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-white font-semibold "
+						href="index.html">Workers
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../mailers/index.html">Mailers
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../task/index.html">Tasks
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../scheduler/index.html">Scheduler
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		
+		
+		
+		<div>
+			<h3 class="mb-4 py-1 text-sm font-semibold text-white border-b border-red-100">Infrastructure</h3>
+			<ul class="mb-4">
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../infrastructure/storage/index.html">Storage
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../infrastructure/cache/index.html">Cache
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../infrastructure/deployment/index.html">Deployment
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../infrastructure/data/index.html">Data
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		
+		
+		
+		<div>
+			<h3 class="mb-4 py-1 text-sm font-semibold text-white border-b border-red-100">Extras</h3>
+			<ul class="mb-4">
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../extras/authentication/index.html">Authentication
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../extras/websocket/index.html">Websocket
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../extras/pluggability/index.html">Pluggability
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../extras/upgrades/index.html">Upgrades
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		
+		
+		
+		<div>
+			<h3 class="mb-4 py-1 text-sm font-semibold text-white border-b border-red-100">Resources</h3>
+			<ul class="mb-4">
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../resources/around-the-web/index.html">Around the Web
+					</a>
+				</li>
+				
+				<li>
+					<a class="inline-block w-full py-1 hover:text-white text-sm  text-red-200 dark:text-zinc-400"
+						href="../../resources/faq/index.html">FAQ
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		
+		
+	</nav>
+</div>
+
+      </aside>
+    </div>
+  </div>
+  <div
+    class="container flex-1 items-start">
+    <main class="py-6 xl:grid xl:grid-cols-[1fr_450px] xl:max-w-[80rem] xl:mx-auto">
+      <div class="mx-auto w-full min-w-0">
+        <div class="markdown prose dark:prose-invert max-w-[60rem] md:pr-12 sm:pr-0">
+          <h1 class="mb-10 mt-[9px]">Workers</h1>
+          
+
+          <p>Loco provides the following options for background jobs:</p>
+<ul>
+<li>Redis backed (powered by <code>sidekiq-rs</code>)</li>
+<li>Postgres backed (own implementation)</li>
+<li>SQLite backed (own implementation)</li>
+<li>Tokio-async based (same-process, evented thread based background jobs)</li>
+</ul>
+<p>You enqueue and perform jobs without knowledge of the actual background queue implementation, similar to  Rails' <em>ActiveJob</em>, so you can switch with a simple change of configuration and no code change.</p>
+<h2 id="async-vs-queue">Async vs Queue</h2>
+<p>When you generated a new app, you might have selected the default <code>async</code> configuration for workers. This means workers spin off jobs in Tokio's async pool, which gives you proper background processes in the same running server.</p>
+<p>You might want to configure jobs to run in a separate process backed by a queue, in order to distribute the load across servers.</p>
+<p>First, switch to <code>BackgroundQueue</code>:</p>
+<pre data-lang="yaml" class="language-yaml z-code"><code class="language-yaml" data-lang="yaml"><span class="z-source z-yaml"><span class="z-comment z-line z-number-sign z-yaml"><span class="z-punctuation z-definition z-comment z-line z-number-sign z-yaml">#</span> Worker Configuration
+</span></span><span class="z-source z-yaml"><span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">workers</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span>
+</span><span class="z-source z-yaml">  <span class="z-comment z-line z-number-sign z-yaml"><span class="z-punctuation z-definition z-comment z-line z-number-sign z-yaml">#</span> specifies the worker mode. Options:
+</span></span><span class="z-source z-yaml">  <span class="z-comment z-line z-number-sign z-yaml"><span class="z-punctuation z-definition z-comment z-line z-number-sign z-yaml">#</span>   - BackgroundQueue - Workers operate asynchronously in the background, processing queued.
+</span></span><span class="z-source z-yaml">  <span class="z-comment z-line z-number-sign z-yaml"><span class="z-punctuation z-definition z-comment z-line z-number-sign z-yaml">#</span>   - ForegroundBlocking - Workers operate in the foreground and block until tasks are completed.
+</span></span><span class="z-source z-yaml">  <span class="z-comment z-line z-number-sign z-yaml"><span class="z-punctuation z-definition z-comment z-line z-number-sign z-yaml">#</span>   - BackgroundAsync - Workers operate asynchronously in the background, processing tasks with async capabilities.
+</span></span><span class="z-source z-yaml">  <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">mode</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">BackgroundQueue</span>
+</span></code></pre>
+<p>Then, configure a Redis based queue backend:</p>
+<pre data-lang="yaml" class="language-yaml z-code"><code class="language-yaml" data-lang="yaml"><span class="z-source z-yaml"><span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">queue</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span>
+</span><span class="z-source z-yaml">  <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">kind</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">Redis</span>
+</span><span class="z-source z-yaml">  <span class="z-comment z-line z-number-sign z-yaml"><span class="z-punctuation z-definition z-comment z-line z-number-sign z-yaml">#</span> Redis connection URI.
+</span></span><span class="z-source z-yaml">  <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">uri</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-quoted z-double z-yaml"><span class="z-punctuation z-definition z-string z-begin z-yaml">&quot;</span><span class="z-punctuation z-definition z-string z-end z-yaml">&quot;</span></span>
+</span><span class="z-source z-yaml">  <span class="z-comment z-line z-number-sign z-yaml"><span class="z-punctuation z-definition z-comment z-line z-number-sign z-yaml">#</span> Dangerously flush all data.
+</span></span><span class="z-source z-yaml">  <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">dangerously_flush</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-constant z-language z-boolean z-yaml">false</span>
+</span><span class="z-source z-yaml">  <span class="z-comment z-line z-number-sign z-yaml"><span class="z-punctuation z-definition z-comment z-line z-number-sign z-yaml">#</span> represents the number of tasks a worker can handle simultaneously.
+</span></span><span class="z-source z-yaml">  <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">num_workers</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-constant z-numeric z-integer z-decimal z-yaml">2</span>
+</span></code></pre>
+<p>Or a Postgres based queue backend:</p>
+<pre data-lang="yaml" class="language-yaml z-code"><code class="language-yaml" data-lang="yaml"><span class="z-source z-yaml"><span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">queue</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span>
+</span><span class="z-source z-yaml">  <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">kind</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">Postgres</span>
+</span><span class="z-source z-yaml">  <span class="z-comment z-line z-number-sign z-yaml"><span class="z-punctuation z-definition z-comment z-line z-number-sign z-yaml">#</span> Postgres Queue connection URI.
+</span></span><span class="z-source z-yaml">  <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">uri</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-quoted z-double z-yaml"><span class="z-punctuation z-definition z-string z-begin z-yaml">&quot;</span><span class="z-punctuation z-definition z-string z-end z-yaml">&quot;</span></span>
+</span><span class="z-source z-yaml">  <span class="z-comment z-line z-number-sign z-yaml"><span class="z-punctuation z-definition z-comment z-line z-number-sign z-yaml">#</span> Dangerously flush all data.
+</span></span><span class="z-source z-yaml">  <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">dangerously_flush</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-constant z-language z-boolean z-yaml">false</span>
+</span><span class="z-source z-yaml">  <span class="z-comment z-line z-number-sign z-yaml"><span class="z-punctuation z-definition z-comment z-line z-number-sign z-yaml">#</span> represents the number of tasks a worker can handle simultaneously.
+</span></span><span class="z-source z-yaml">  <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">num_workers</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-constant z-numeric z-integer z-decimal z-yaml">2</span>
+</span></code></pre>
+<p>Or a SQLite based queue backend:</p>
+<pre data-lang="yaml" class="language-yaml z-code"><code class="language-yaml" data-lang="yaml"><span class="z-source z-yaml"><span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">queue</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span>
+</span><span class="z-source z-yaml">  <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">kind</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">Sqlite</span>
+</span><span class="z-source z-yaml">  <span class="z-comment z-line z-number-sign z-yaml"><span class="z-punctuation z-definition z-comment z-line z-number-sign z-yaml">#</span> SQLite Queue connection URI.
+</span></span><span class="z-source z-yaml">  <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">uri</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-quoted z-double z-yaml"><span class="z-punctuation z-definition z-string z-begin z-yaml">&quot;</span><span class="z-punctuation z-definition z-string z-end z-yaml">&quot;</span></span>
+</span><span class="z-source z-yaml">  <span class="z-comment z-line z-number-sign z-yaml"><span class="z-punctuation z-definition z-comment z-line z-number-sign z-yaml">#</span> Dangerously flush all data. 
+</span></span><span class="z-source z-yaml">  <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">dangerously_flush</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-constant z-language z-boolean z-yaml">false</span>
+</span><span class="z-source z-yaml">  <span class="z-comment z-line z-number-sign z-yaml"><span class="z-punctuation z-definition z-comment z-line z-number-sign z-yaml">#</span> represents the number of tasks a worker can handle simultaneously.
+</span></span><span class="z-source z-yaml">  <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">num_workers</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-constant z-numeric z-integer z-decimal z-yaml">2</span>
+</span></code></pre>
+<h2 id="running-the-worker-process">Running the worker process</h2>
+<p>You can run in two ways, depending on which setting you chose for background workers:</p>
+<pre class="z-code"><code><span class="z-text z-plain">Usage: demo_app start [OPTIONS]
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">Options:
+</span><span class="z-text z-plain">  -w, --worker                     start worker
+</span><span class="z-text z-plain">  -s, --server-and-worker          start same-process server and worker
+</span></code></pre>
+<p>Choose <code>--worker</code> when you configured a real Redis queue and you want a process for doing just background jobs. You can use a single process per server. In this case, you can run your main Web or API server using just <code>cargo loco start</code>.</p>
+<pre data-lang="sh" class="language-sh z-code"><code class="language-sh" data-lang="sh"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">$</span></span><span class="z-meta z-function-call z-arguments z-shell"> cargo loco start<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>worker <span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell"> starts a standalone worker job executing process</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span></span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">$</span></span><span class="z-meta z-function-call z-arguments z-shell"> cargo loco start <span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell"> starts a standalone API service or Web server, no workers</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span></span></code></pre>
+<p>Choose <code>-s</code> when you configured <code>async</code> background workers, and jobs will execute as part of the current running server process.</p>
+<p>For example, running <code>--server-and-worker</code>:</p>
+<pre data-lang="sh" class="language-sh z-code"><code class="language-sh" data-lang="sh"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">$</span></span><span class="z-meta z-function-call z-arguments z-shell"> cargo loco start<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>server-and-worker <span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell"> both API service and workers will execute</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span></span></span></code></pre>
+<h2 id="creating-background-jobs-in-code">Creating background jobs in code</h2>
+<p>To use a worker, we mainly think about adding a job to the queue, so you <code>use</code> the worker and perform later:</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust">    <span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> .. in your controller ..
+</span></span><span class="z-source z-rust">    <span class="z-meta z-path z-rust">DownloadWorker<span class="z-punctuation z-accessor z-rust">::</span></span>perform_later<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>
+</span></span><span class="z-source z-rust"><span class="z-meta z-group z-rust">        <span class="z-keyword z-operator z-bitwise z-rust">&amp;</span>ctx<span class="z-punctuation z-separator z-rust">,</span>
+</span></span><span class="z-source z-rust"><span class="z-meta z-group z-rust">        DownloadWorkerArgs <span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-block z-rust">            user_guid<span class="z-punctuation z-separator z-rust">:</span> <span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>foo<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">to_string</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-separator z-rust">,</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-group z-rust"><span class="z-meta z-block z-rust">        </span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span><span class="z-punctuation z-separator z-rust">,</span>
+</span></span><span class="z-source z-rust"><span class="z-meta z-group z-rust">    </span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span>
+</span><span class="z-source z-rust">    <span class="z-punctuation z-accessor z-dot z-rust">.</span>await
+</span></code></pre>
+<p>Unlike Rails and Ruby, with Rust you can enjoy <em>strongly typed</em> job arguments which gets serialized and pushed into the queue.</p>
+<h3 id="using-shared-state-from-a-worker">Using shared state from a worker</h3>
+<p>See <a href="../../the-app/controller/index.html">How to have global state</a>, but generally you use a single shared state by using something like <code>lazy_static</code> and then simply refer to it from the worker.</p>
+<p>If this state can be serializable, <em>strongly prefer</em> to pass it through the <code>WorkerArgs</code>.</p>
+<h2 id="creating-a-new-worker">Creating a new worker</h2>
+<p>Adding a worker meaning coding the background job logic to take the <em>arguments</em> and perform a job. We also need to let <code>loco</code> know about it and register it into the global job processor.</p>
+<p>Add a worker to <code>workers/</code>:</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-meta z-annotation z-rust"><span class="z-punctuation z-definition z-annotation z-rust">#</span><span class="z-punctuation z-section z-group z-begin z-rust">[</span><span class="z-variable z-annotation z-rust">async_trait</span><span class="z-punctuation z-section z-group z-end z-rust">]</span></span>
+</span><span class="z-source z-rust"><span class="z-meta z-impl z-rust"><span class="z-storage z-type z-impl z-rust">impl</span> </span><span class="z-meta z-impl z-rust"><span class="z-meta z-generic z-rust">BackgroundWorker<span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span>DownloadWorkerArgs<span class="z-punctuation z-definition z-generic z-end z-rust">&gt;</span></span> <span class="z-keyword z-other z-rust">for</span></span><span class="z-meta z-impl z-rust"> <span class="z-entity z-name z-impl z-rust">DownloadWorker</span> </span><span class="z-meta z-impl z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-impl z-rust"><span class="z-meta z-block z-rust">    <span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">build</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">(</span><span class="z-variable z-parameter z-rust">ctx</span><span class="z-punctuation z-separator z-rust">:</span> <span class="z-keyword z-operator z-rust">&amp;</span>AppContext</span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">)</span></span></span></span><span class="z-meta z-function z-rust"> <span class="z-meta z-function z-return-type z-rust"><span class="z-punctuation z-separator z-rust">-&gt;</span> <span class="z-storage z-type z-rust">Self</span></span> </span><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-impl z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">        <span class="z-storage z-type z-rust">Self</span> <span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span> ctx<span class="z-punctuation z-separator z-rust">:</span> ctx<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">clone</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span> </span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span>
+</span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-impl z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    </span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-impl z-rust"><span class="z-meta z-block z-rust">    async <span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">perform</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">(</span><span class="z-keyword z-operator z-rust">&amp;</span><span class="z-variable z-parameter z-rust">self</span>, <span class="z-variable z-parameter z-rust">args</span><span class="z-punctuation z-separator z-rust">:</span> DownloadWorkerArgs</span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">)</span></span></span></span><span class="z-meta z-function z-rust"> <span class="z-meta z-function z-return-type z-rust"><span class="z-punctuation z-separator z-rust">-&gt;</span> <span class="z-meta z-generic z-rust"><span class="z-support z-type z-rust">Result</span><span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-punctuation z-section z-group z-end z-rust">)</span><span class="z-punctuation z-definition z-generic z-end z-rust">&gt;</span></span></span> </span><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-impl z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">        <span class="z-support z-macro z-rust">println!</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>[REDACTED_AWS_SECRET]========<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-impl z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">        <span class="z-support z-macro z-rust">println!</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>Sending payment report to user <span class="z-constant z-other z-placeholder z-rust">{}</span><span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-separator z-rust">,</span> args<span class="z-punctuation z-accessor z-dot z-rust">.</span>user_guid<span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-impl z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">
+</span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-impl z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">        <span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> TODO: Some actual work goes here...
+</span></span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-impl z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">
+</span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-impl z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">        <span class="z-support z-macro z-rust">println!</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-string z-quoted z-double z-rust"><span class="z-punctuation z-definition z-string z-begin z-rust">&quot;</span>[REDACTED_AWS_SECRET]========<span class="z-punctuation z-definition z-string z-end z-rust">&quot;</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-impl z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">        <span class="z-support z-type z-rust">Ok</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span>
+</span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-impl z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    </span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-impl z-rust"><span class="z-meta z-block z-rust"></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></code></pre>
+<p>And register it in <code>app.rs</code>:</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-meta z-annotation z-rust"><span class="z-punctuation z-definition z-annotation z-rust">#</span><span class="z-punctuation z-section z-group z-begin z-rust">[</span><span class="z-variable z-annotation z-rust">async_trait</span><span class="z-punctuation z-section z-group z-end z-rust">]</span></span>
+</span><span class="z-source z-rust"><span class="z-meta z-impl z-rust"><span class="z-storage z-type z-impl z-rust">impl</span> </span><span class="z-meta z-impl z-rust">Hooks <span class="z-keyword z-other z-rust">for</span></span><span class="z-meta z-impl z-rust"> <span class="z-entity z-name z-impl z-rust">App</span> </span><span class="z-meta z-impl z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-impl z-rust"><span class="z-meta z-block z-rust"><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span>..
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-impl z-rust"><span class="z-meta z-block z-rust">    async <span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">connect_workers</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">(</span><span class="z-variable z-parameter z-rust">ctx</span><span class="z-punctuation z-separator z-rust">:</span> <span class="z-keyword z-operator z-rust">&amp;</span>AppContext, <span class="z-variable z-parameter z-rust">queue</span><span class="z-punctuation z-separator z-rust">:</span> <span class="z-keyword z-operator z-rust">&amp;</span>Queue</span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">)</span></span></span></span><span class="z-meta z-function z-rust"> <span class="z-meta z-function z-return-type z-rust"><span class="z-punctuation z-separator z-rust">-&gt;</span> <span class="z-meta z-generic z-rust"><span class="z-support z-type z-rust">Result</span><span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-punctuation z-section z-group z-end z-rust">)</span><span class="z-punctuation z-definition z-generic z-end z-rust">&gt;</span></span></span> </span><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-impl z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">        queue<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">register</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-meta z-path z-rust">DownloadWorker<span class="z-punctuation z-accessor z-rust">::</span></span>build<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>ctx</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span>await<span class="z-keyword z-operator z-rust">?</span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-impl z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">        <span class="z-support z-type z-rust">Ok</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span>
+</span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-impl z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    </span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-impl z-rust"><span class="z-meta z-block z-rust"><span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> ..
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-impl z-rust"><span class="z-meta z-block z-rust"></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></code></pre>
+<h3 id="generate-a-worker">Generate a Worker</h3>
+<p>To automatically add a worker using <code>loco generate</code>, execute the following command:</p>
+<pre data-lang="sh" class="language-sh z-code"><code class="language-sh" data-lang="sh"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">cargo</span></span><span class="z-meta z-function-call z-arguments z-shell"> loco generate worker report_worker</span>
+</span></code></pre>
+<p>The worker generator creates a worker file associated with your app and generates a test template file, enabling you to verify your worker.</p>
+<h2 id="configuring-workers">Configuring Workers</h2>
+<p>In your <code>config/&lt;environment&gt;.yaml</code> you can specify the worker mode. BackgroundAsync and BackgroundQueue will process jobs in a non-blocking manner, while ForegroundBlocking will process jobs in a blocking manner.</p>
+<p>The main difference between BackgroundAsync and BackgroundQueue is that the latter will use Redis/Postgres/SQLite to store the jobs, while the former does not require Redis/Postgres/SQLite and will use async in memory within the same process.</p>
+<pre data-lang="yaml" class="language-yaml z-code"><code class="language-yaml" data-lang="yaml"><span class="z-source z-yaml"><span class="z-comment z-line z-number-sign z-yaml"><span class="z-punctuation z-definition z-comment z-line z-number-sign z-yaml">#</span> Worker Configuration
+</span></span><span class="z-source z-yaml"><span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">workers</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span>
+</span><span class="z-source z-yaml">  <span class="z-comment z-line z-number-sign z-yaml"><span class="z-punctuation z-definition z-comment z-line z-number-sign z-yaml">#</span> specifies the worker mode. Options:
+</span></span><span class="z-source z-yaml">  <span class="z-comment z-line z-number-sign z-yaml"><span class="z-punctuation z-definition z-comment z-line z-number-sign z-yaml">#</span>   - BackgroundQueue - Workers operate asynchronously in the background, processing queued.
+</span></span><span class="z-source z-yaml">  <span class="z-comment z-line z-number-sign z-yaml"><span class="z-punctuation z-definition z-comment z-line z-number-sign z-yaml">#</span>   - ForegroundBlocking - Workers operate in the foreground and block until tasks are completed.
+</span></span><span class="z-source z-yaml">  <span class="z-comment z-line z-number-sign z-yaml"><span class="z-punctuation z-definition z-comment z-line z-number-sign z-yaml">#</span>   - BackgroundAsync - Workers operate asynchronously in the background, processing tasks with async capabilities.
+</span></span><span class="z-source z-yaml">  <span class="z-string z-unquoted z-plain z-out z-yaml"><span class="z-entity z-name z-tag z-yaml">mode</span></span><span class="z-punctuation z-separator z-key-value z-mapping z-yaml">:</span> <span class="z-string z-unquoted z-plain z-out z-yaml">BackgroundQueue</span>
+</span></code></pre>
+<h2 id="manage-a-workers-from-ui">Manage a Workers From UI</h2>
+<p>You can manage the jobs queue with the <a href="https://github.com/loco-rs/admin-jobs" target="_blank" rel="noopener">Loco admin job project</a>.
+<img src="https://github.com/loco-rs/admin-jobs/raw/main/media/screenshot.png" alt="&lt;img style=&quot;width:100%; max-width:640px&quot; src=&quot;tour.png&quot;/&gt;" /></p>
+<h3 id="managing-job-queues-via-cli">Managing Job Queues via CLI</h3>
+<p>The job queue management feature provides a powerful and flexible way to handle the lifecycle of jobs in your application. It allows you to cancel, clean up, remove outdated jobs, export job details, and import jobs, ensuring efficient and organized job processing.</p>
+<h2 id="features-overview">Features Overview</h2>
+<ul>
+<li><strong>Cancel Jobs</strong><br />
+Provides the ability to cancel specific jobs by name, updating their status to <code>cancelled</code>. This is useful for stopping jobs that are no longer needed, relevant, or if you want to prevent them from being processed when a bug is detected.</li>
+<li><strong>Clean Up Jobs</strong><br />
+Enables the removal of jobs that have already been completed or cancelled. This helps maintain a clean and efficient job queue by eliminating unnecessary entries.</li>
+<li><strong>Purge Outdated Jobs</strong><br />
+Allows you to delete jobs based on their age, measured in days. This is particularly useful for maintaining a lean job queue by removing older, irrelevant jobs.<br />
+<strong>Note</strong>: You can use the <code>--dump</code> option to export job details to a file, manually modify the job parameters in the exported file, and then use the <code>import</code> feature to reintroduce the updated jobs into the system.</li>
+<li><strong>Export Job Details</strong><br />
+Supports exporting the details of all jobs to a specified location in file format. This feature is valuable for backups, audits, or further analysis.</li>
+<li><strong>Import Jobs</strong><br />
+Facilitates importing jobs from external files, making it easy to restore or add new jobs to the system. This ensures seamless integration of external job data into your application's workflow.</li>
+</ul>
+<p>To access the job management commands, use the following CLI structure:</p>
+<!-- <snip id="jobs-help-command" inject_from="yaml" action="exec" template="sh"> -->
+<pre data-lang="sh" class="language-sh z-code"><code class="language-sh" data-lang="sh"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Managing</span></span><span class="z-meta z-function-call z-arguments z-shell"> jobs queue</span>
+</span><span class="z-source z-shell z-bash">
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Usage:</span></span><span class="z-meta z-function-call z-arguments z-shell"> demo_app-cli jobs <span class="z-keyword z-control z-regexp z-set z-begin z-shell">[</span>OPTIONS<span class="z-keyword z-control z-regexp z-set z-end z-shell">]</span> <span class="z-keyword z-operator z-assignment z-redirection z-shell">&lt;</span>COMMAND<span class="z-keyword z-operator z-assignment z-redirection z-shell">&gt;</span>
+</span></span><span class="z-source z-shell z-bash">
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Commands:</span></span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">cancel</span></span><span class="z-meta z-function-call z-arguments z-shell">  Cancels jobs with the specified names, setting their status to <span class="z-meta z-group z-expansion z-command z-backticks z-shell"><span class="z-punctuation z-section z-group z-begin z-shell">`</span><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">cancelled</span></span><span class="z-punctuation z-section z-group z-end z-shell">`</span></span></span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">tidy</span></span><span class="z-meta z-function-call z-arguments z-shell">    Deletes jobs that are either completed or cancelled</span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">purge</span></span><span class="z-meta z-function-call z-arguments z-shell">   Deletes jobs based on their age in days</span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">dump</span></span><span class="z-meta z-function-call z-arguments z-shell">    Saves the details of all jobs to files in the specified folder</span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">import</span></span><span class="z-meta z-function-call z-arguments z-shell">  Imports jobs from a file</span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-support z-function z-help z-shell">help</span></span><span class="z-meta z-function-call z-arguments z-shell">    Print this message or the help of the given subcommand(s</span><span class="z-meta z-function-call z-shell"></span>)
+</span><span class="z-source z-shell z-bash">
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Options:</span></span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">-e,</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>environment</span> <span class="z-keyword z-operator z-assignment z-redirection z-shell">&lt;</span>ENVIRONMENT<span class="z-keyword z-operator z-assignment z-redirection z-shell">&gt;</span>  Specify the environment <span class="z-keyword z-control z-regexp z-set z-begin z-shell">[</span>default: development<span class="z-keyword z-control z-regexp z-set z-end z-shell">]</span></span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">-h,</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>help</span>                       Print help</span>
+</span><span class="z-source z-shell z-bash">  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">-V,</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>version</span>                    Print version</span>
+</span></code></pre>
+<!-- </snip> -->
+<h2 id="testing-a-worker">Testing a Worker</h2>
+<p>You can easily test your worker background jobs using <code>Loco</code>. Ensure that your worker is set to the <code>ForegroundBlocking</code> mode, which blocks the job, ensuring it runs synchronously. When testing the worker, the test will wait until your worker is completed, allowing you to verify if the worker accomplished its intended tasks.</p>
+<p>It's recommended to implement tests in the <code>tests/workers</code> directory to consolidate all your worker tests in one place.</p>
+<p>Additionally, you can leverage the <a href="index.html">worker generator</a>, which automatically creates tests, saving you time on configuring tests in the library.</p>
+<p>Here's an example of how the test should be structured:</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-keyword z-other z-rust">use</span> <span class="z-meta z-path z-rust">loco_rs<span class="z-punctuation z-accessor z-rust">::</span></span><span class="z-meta z-path z-rust">testing<span class="z-punctuation z-accessor z-rust">::</span></span><span class="z-meta z-path z-rust">prelude<span class="z-punctuation z-accessor z-rust">::</span></span><span class="z-keyword z-operator z-arithmetic z-rust">*</span><span class="z-punctuation z-terminator z-rust">;</span>
+</span><span class="z-source z-rust">
+</span><span class="z-source z-rust"><span class="z-meta z-annotation z-rust"><span class="z-punctuation z-definition z-annotation z-rust">#</span><span class="z-punctuation z-section z-group z-begin z-rust">[</span><span class="z-variable z-annotation z-rust">tokio</span>::<span class="z-variable z-annotation z-rust">test</span><span class="z-punctuation z-section z-group z-end z-rust">]</span></span>
+</span><span class="z-source z-rust"><span class="z-meta z-annotation z-rust"><span class="z-punctuation z-definition z-annotation z-rust">#</span><span class="z-punctuation z-section z-group z-begin z-rust">[</span><span class="z-variable z-annotation z-rust">serial</span><span class="z-punctuation z-section z-group z-end z-rust">]</span></span>
+</span><span class="z-source z-rust">async <span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">test_run_report_worker_worker</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-begin z-rust">(</span></span><span class="z-meta z-function z-rust"><span class="z-meta z-function z-parameters z-rust"><span class="z-punctuation z-section z-parameters z-end z-rust">)</span></span></span></span><span class="z-meta z-function z-rust"> </span><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    <span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> Set up the test environment
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    <span class="z-storage z-type z-rust">let</span> boot <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-meta z-path z-rust">boot_test<span class="z-punctuation z-accessor z-rust">::</span></span><span class="z-meta z-generic z-rust"><span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span>App, Migrator<span class="z-punctuation z-definition z-generic z-end z-rust">&gt;</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-accessor z-dot z-rust">.</span>await<span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">unwrap</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    <span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> Execute the worker in &#39;ForegroundBlocking&#39; mode, preventing it from running asynchronously
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    <span class="z-support z-macro z-rust">assert!</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust">        <span class="z-meta z-path z-rust">ReportWorkerWorker<span class="z-punctuation z-accessor z-rust">::</span></span>perform_later<span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-keyword z-operator z-bitwise z-rust">&amp;</span>boot<span class="z-punctuation z-accessor z-dot z-rust">.</span>app_context<span class="z-punctuation z-separator z-rust">,</span> ReportWorkerWorkerArgs <span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span>
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust">            <span class="z-punctuation z-accessor z-dot z-rust">.</span>await
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust">            <span class="z-punctuation z-accessor z-dot z-rust">.</span><span class="z-support z-function z-rust">is_ok</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span>
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-group z-rust">    </span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust">    <span class="z-comment z-line z-double-slash z-rust"><span class="z-punctuation z-definition z-comment z-rust">//</span> Include additional assert validations after the execution of the worker
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-block z-rust"></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span><span class="z-source z-rust">
+</span></code></pre>
+
+        </div>
+        
+        
+<div class="flex items-center justify-between px-2">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <a href="https://&/#x2F;&#x2F;loco.rs&#x2F;docs&#x2F;the-app&#x2F;controller&#x2F;" target="_blank" rel="noopener">
+    <div class="card my-1">
+      <div class="card-body py-2">
+        &larr; Controllers
+      </div>
+    </div>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <a class="ms-auto" href="https://&/#x2F;&#x2F;loco.rs&#x2F;docs&#x2F;processing&#x2F;mailers&#x2F;" target="_blank" rel="noopener">
+    <div class="card my-1">
+      <div class="card-body py-2">
+        Mailers &rarr;
+      </div>
+    </div>
+  </a>
+  
+</div>
+
+      </div>
+
+      <div class="hidden text-sm xl:block">
+        <div class="bg-gray-50 p-2 mt-[90px] border border-gray-200 rounded-sm dark:bg-zinc-900">
+        
+
+<nav>
+	<ul>
+		
+		<li class="mb-1 px-2 py-1 text-sm font-semibold"><a href="index.html">Async vs Queue</a></li>
+		
+		
+		<li class="mb-1 px-2 py-1 text-sm font-semibold"><a href="index.html">Running the worker process</a></li>
+		
+		
+		<li class="mb-1 px-2 py-1 text-sm font-semibold"><a href="index.html">Creating background jobs in code</a></li>
+		
+		<ul>
+			
+			<li
+				class="group flex w-full items-center border border-transparent pl-5 px-2 py-1 hover:underline text-sm  text-foreground">
+				<a href="index.html">Using shared state from a worker</a>
+			</li>
+			
+		</ul>
+		
+		
+		<li class="mb-1 px-2 py-1 text-sm font-semibold"><a href="index.html">Creating a new worker</a></li>
+		
+		<ul>
+			
+			<li
+				class="group flex w-full items-center border border-transparent pl-5 px-2 py-1 hover:underline text-sm  text-foreground">
+				<a href="index.html">Generate a Worker</a>
+			</li>
+			
+		</ul>
+		
+		
+		<li class="mb-1 px-2 py-1 text-sm font-semibold"><a href="index.html">Configuring Workers</a></li>
+		
+		
+		<li class="mb-1 px-2 py-1 text-sm font-semibold"><a href="index.html">Manage a Workers From UI</a></li>
+		
+		<ul>
+			
+			<li
+				class="group flex w-full items-center border border-transparent pl-5 px-2 py-1 hover:underline text-sm  text-foreground">
+				<a href="index.html">Managing Job Queues via CLI</a>
+			</li>
+			
+		</ul>
+		
+		
+		<li class="mb-1 px-2 py-1 text-sm font-semibold"><a href="index.html">Features Overview</a></li>
+		
+		
+		<li class="mb-1 px-2 py-1 text-sm font-semibold"><a href="index.html">Testing a Worker</a></li>
+		
+		
+	</ul>
+</nav>
+
+
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+
+
+</div>
+
+
+</div>
+
+  </div>
+
+  
+<div class="section bg-redrust dark:bg-zinc-800 pt-8">
+  <div class="container flex flex-col items-center text-center text-background py-8 pb-12">
+      <div class="mb-8">
+      <img src="https://loco.rs/icon.svg" width="130px" />
+      </div>
+      <div class="footer-links">
+          <a href="https://github.com/loco-rs/loco" target="_blank" rel="noopener">
+              Github
+          </a>
+          <a href="https://github.com/loco-rs/loco/blob/master/CODE_OF_CONDUCT.md" target="_blank" rel="noopener">
+              Code of Conduct
+          </a>
+          <a href="https://github.com/loco-rs/loco/blob/master/LICENSE" target="_blank" rel="noopener">
+              License
+          </a>
+          <a href="https://github.com/loco-rs/loco/blob/master/SECURITY.md" target="_blank" rel="noopener">
+              Security
+          </a>
+      </div>
+  </div>
+</div>
+
+  
+<script type="text/javascript" src="https://loco.rs/js/main.js" defer></script>
+
+  <script type="text/javascript" src="https://loco.rs/plugins/elasticlunr.min.js" defer></script>
+  <script type="text/javascript" src="https://loco.rs/search_index.en.js" defer></script>
+  <script type="text/javascript" src="https://loco.rs/js/search.js" defer></script>
+
+
+
+</body>
+
+</html>
